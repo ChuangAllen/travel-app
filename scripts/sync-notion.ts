@@ -174,6 +174,7 @@ async function syncItinerary() {
     if (txt(p["備註"])) item.note = txt(p["備註"]);
     if (txt(p["票券"])) item.pass = txt(p["票券"]);
     if (url(p["地圖"])) item.mapUrl = url(p["地圖"]);
+    if (url(p["連結"])) item.link = url(p["連結"]);
     d.items.push(item);
   }
   for (const [slug, days] of bySlug) {

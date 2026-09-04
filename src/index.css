@@ -192,6 +192,19 @@ a {
   white-space: pre-line;
 }
 
+.item .body .item-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 12px;
+  margin-top: 4px;
+  font-size: 12px;
+}
+
+.item .body .item-links a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
 .type-dot {
   font-size: 12px;
   margin-right: 4px;

@@ -39,40 +39,47 @@
           "time": "13:00",
           "type": "hotel",
           "title": "放行李 聖水洞 Airbnb",
-          "note": "서울 성동구 아차산로7길 17-9"
+          "note": "서울 성동구 아차산로7길 17-9",
+          "mapUrl": "https://maps.app.goo.gl/qJejKdSSC5ek4gjz8"
         },
         {
           "time": "13:30",
           "type": "food",
           "title": "午餐 蛤蠣刀削麵 조조칼국수 성수점",
-          "note": "서울 성동구 성수일로8길 55 1층"
+          "note": "서울 성동구 성수일로8길 55 1층",
+          "mapUrl": "https://maps.app.goo.gl/cBeAGC6yEBpLK3yt8"
         },
         {
           "time": "15:00",
           "type": "sightseeing",
-          "title": "櫻花 首爾林公園"
+          "title": "櫻花 首爾林公園",
+          "mapUrl": "https://www.google.com/maps/search/?api=1&query=%EC%84%9C%EC%9A%B8%EC%88%B2"
         },
         {
           "time": "17:00",
           "type": "food",
           "title": "咖啡廳 草莓蛋糕 Rafre Fruit",
-          "note": "서울 성동구 서울숨 2길 8-8 2층"
+          "note": "서울 성동구 서울숨 2길 8-8 2층",
+          "mapUrl": "https://maps.app.goo.gl/vMEjSw6aBSusMDqY7"
         },
         {
           "time": "18:30",
           "type": "sightseeing",
-          "title": "聖水洞"
+          "title": "聖水洞",
+          "mapUrl": "https://www.google.com/maps/search/?api=1&query=%EC%84%B1%EC%88%98%EB%8F%99%20%EC%B9%B4%ED%8E%98%EA%B1%B0%EB%A6%AC"
         },
         {
           "time": "19:00",
           "type": "food",
           "title": "晚餐 祖傳三代馬鈴薟排骨",
-          "note": "연무장길 45／New Balance 연무장길 24／炸雞 60계치킨 서울성수점／Olive Young 연무장7길 13"
+          "note": "연무장길 45／New Balance 연무장길 24／炸雞 60계치킨 서울성수점／Olive Young 연무장7길 13",
+          "mapUrl": "https://maps.app.goo.gl/BPJWSuFVvA6JFkbXA"
         },
         {
           "time": "23:30",
           "type": "hotel",
-          "title": "住宿 聖水洞 Airbnb"
+          "title": "住宿 聖水洞 Airbnb",
+          "mapUrl": "https://maps.app.goo.gl/qJejKdSSC5ek4gjz8"
         }
       ]
     },
@@ -86,58 +93,74 @@
           "time": "07:00",
           "type": "food",
           "title": "EGG DROP",
-          "note": "서울 송파구 송파대로49길 52 나인파크"
+          "note": "서울 송파구 송파대로49길 52 나인파크",
+          "mapUrl": "https://www.google.com/maps/search/?api=1&query=37.5063364%2C127.0989218",
+          "link": "https://naver.me/FHlUktuO"
         },
         {
           "time": "11:00",
           "type": "sightseeing",
-          "title": "石村湖"
+          "title": "石村湖",
+          "mapUrl": "https://www.google.com/maps/search/?api=1&query=%EC%84%9D%EC%B4%8C%ED%98%B8%EC%88%98"
         },
         {
           "time": "13:00",
           "type": "sightseeing",
           "title": "樂天世界塔",
-          "note": "9:00 營業・168cm 手機殼 올림픽로 240 어드벤처 2층"
+          "note": "9:00 營業・168cm 手機殼 올림픽로 240 어드벤처 2층",
+          "mapUrl": "https://www.google.com/maps/search/?api=1&query=%EB%A1%AF%EB%8D%B0%EC%9B%94%EB%93%9C%ED%83%80%EC%9B%8C",
+          "link": "https://naver.me/Fcm9Z6lS"
         },
         {
           "time": "13:30",
           "type": "sightseeing",
           "title": "星空圖書館",
-          "note": "영동대로 513 스타필드 코엑스몰 B1"
+          "note": "영동대로 513 스타필드 코엑스몰 B1",
+          "mapUrl": "https://www.google.com/maps/search/?api=1&query=37.5100516%2C127.060182",
+          "link": "https://naver.me/FK5hJUlR"
         },
         {
           "time": "15:00",
           "type": "sightseeing",
-          "title": "弘大"
+          "title": "弘大",
+          "mapUrl": "https://www.google.com/maps/search/?api=1&query=%ED%99%8D%EB%8C%80%EC%9E%85%EA%B5%AC%EC%97%AD"
         },
         {
           "time": "16:00",
           "type": "food",
           "title": "咖啡廳 申李道家",
-          "note": "서울 마포구 잔다리로 20-12"
+          "note": "서울 마포구 잔다리로 20-12",
+          "mapUrl": "https://www.google.com/maps/search/?api=1&query=37.5514562%2C126.9210017",
+          "link": "https://naver.me/FdCwcoJ0"
         },
         {
           "time": "17:30",
           "type": "food",
           "title": "晚餐 給豚的男人",
-          "note": "잔다리로6길 34-9 돼주는남자"
+          "note": "잔다리로6길 34-9 돼주는남자",
+          "mapUrl": "https://www.google.com/maps/search/?api=1&query=37.5519973%2C126.9210945",
+          "link": "https://naver.me/xVB6tBby"
         },
         {
           "time": "19:30",
           "type": "shopping",
           "title": "汝矣島現代百貨",
-          "note": "여의대로 108 더현대 서울／Deepound B2"
+          "note": "여의대로 108 더현대 서울／Deepound B2",
+          "mapUrl": "https://www.google.com/maps/search/?api=1&query=37.5259903%2C126.9283823",
+          "link": "https://naver.me/GALyDTiz"
         },
         {
           "time": "20:40",
           "type": "sightseeing",
           "title": "汝矣島夜櫻 輪中路",
-          "note": "沒開"
+          "note": "沒開",
+          "mapUrl": "https://www.google.com/maps/search/?api=1&query=%EC%97%AC%EC%9D%98%EB%8F%84%20%EC%9C%A4%EC%A4%91%EB%A1%9C%20%EB%B2%9A%EA%BD%83%EA%B8%B8"
         },
         {
           "time": "22:00",
           "type": "hotel",
-          "title": "住宿 聖水洞 Airbnb"
+          "title": "住宿 聖水洞 Airbnb",
+          "mapUrl": "https://maps.app.goo.gl/qJejKdSSC5ek4gjz8"
         }
       ]
     },
@@ -156,51 +179,65 @@
           "time": "09:00",
           "type": "activity",
           "title": "Yes 韓服",
-          "note": "已預約・사직로 133-6"
+          "note": "已預約・사직로 133-6",
+          "mapUrl": "https://www.google.com/maps/search/?api=1&query=37.5762109%2C126.9734933",
+          "link": "https://naver.me/GwpTtBEu"
         },
         {
           "time": "09:30",
           "type": "sightseeing",
-          "title": "景福宮"
+          "title": "景福宮",
+          "mapUrl": "https://www.google.com/maps/search/?api=1&query=%EA%B2%BD%EB%B3%B5%EA%B6%81"
         },
         {
           "time": "11:00",
           "type": "sightseeing",
-          "title": "北村"
+          "title": "北村",
+          "mapUrl": "https://www.google.com/maps/search/?api=1&query=%EB%B6%81%EC%B4%8C%ED%95%9C%EC%98%A5%EB%A7%88%EC%9D%84"
         },
         {
           "time": "12:00",
           "type": "activity",
           "title": "還韓服",
-          "note": "香水 Granhand 자하문로4길 14-2"
+          "note": "還韓服（同上）｜香水 Granhand https://naver.me/5neH5knq 自門立四街48-2",
+          "mapUrl": "https://www.google.com/maps/search/?api=1&query=37.5762109%2C126.9734933",
+          "link": "https://naver.me/GwpTtBEu"
         },
         {
           "time": "13:00",
           "type": "food",
           "title": "午餐 Toma Bukchon 義大利麵",
-          "note": "북촌로5길 39 1층"
+          "note": "북촌로5길 39 1층",
+          "mapUrl": "https://www.google.com/maps/search/?api=1&query=37.5793518%2C126.9827234",
+          "link": "https://naver.me/xMjQUhg0"
         },
         {
           "time": "13:30",
           "type": "sightseeing",
-          "title": "益善洞"
+          "title": "益善洞",
+          "mapUrl": "https://www.google.com/maps/search/?api=1&query=%EC%9D%B5%EC%84%A0%EB%8F%99%20%ED%95%9C%EC%98%A5%EA%B1%B0%EB%A6%AC"
         },
         {
           "time": "15:30",
           "type": "food",
           "title": "咖啡廳 Onion",
-          "note": "계동길 5 카페 어니언／小夏鹽田 수표로28길 21-5"
+          "note": "計洞路 5 卡洞尼弘｜小夏鹽田 https://naver.me/GoDn91Nq 水表路28街21-5",
+          "mapUrl": "https://www.google.com/maps/search/?api=1&query=37.5774607%2C126.9865244",
+          "link": "https://naver.me/xWTHZRF9"
         },
         {
           "time": "18:30",
           "type": "food",
           "title": "晚餐 Solsot 釜飯",
-          "note": "삼일대로30길 46 1층"
+          "note": "삼일대로30길 46 1층",
+          "mapUrl": "https://www.google.com/maps/search/?api=1&query=37.5742342%2C126.9901947",
+          "link": "https://naver.me/5ssJgjFm"
         },
         {
           "time": "21:00",
           "type": "hotel",
-          "title": "住宿 聖水洞 Airbnb"
+          "title": "住宿 聖水洞 Airbnb",
+          "mapUrl": "https://maps.app.goo.gl/qJejKdSSC5ek4gjz8"
         }
       ]
     },
@@ -218,7 +255,9 @@
         {
           "time": "07:30",
           "type": "transport",
-          "title": "東大門歷史文化公園站 11 號出口"
+          "title": "東大門歷史文化公園站 11 號出口",
+          "mapUrl": "https://www.google.com/maps/search/?api=1&query=37.5657832%2C127.0074218",
+          "link": "https://naver.me/5pwgoRny"
         },
         {
           "time": "07:40",
@@ -229,7 +268,8 @@
           "time": "09:30",
           "type": "sightseeing",
           "title": "南怡島",
-          "note": "停留 2 小時"
+          "note": "停留 2 小時",
+          "mapUrl": "https://www.google.com/maps/search/?api=1&query=%EB%82%A8%EC%9D%B4%EC%84%AC"
         },
         {
           "time": "12:00",
@@ -240,13 +280,15 @@
           "time": "13:30",
           "type": "activity",
           "title": "江村鐵道公園",
-          "note": "停留 1.5 小時"
+          "note": "停留 1.5 小時",
+          "mapUrl": "https://www.google.com/maps/search/?api=1&query=%EA%B0%95%EC%B4%8C%EB%A0%88%EC%9D%BC%ED%8C%8C%ED%81%AC%20%EA%B9%80%EC%9C%A0%EC%A0%95%EC%97%AD"
         },
         {
           "time": "16:00",
           "type": "sightseeing",
           "title": "晨靜樹木園",
-          "note": "停留 70 分鐘"
+          "note": "停留 70 分鐘",
+          "mapUrl": "https://www.google.com/maps/search/?api=1&query=%EC%95%84%EC%B9%A8%EA%B3%A0%EC%9A%94%EC%88%98%EB%AA%A9%EC%9B%90"
         },
         {
           "time": "18:30",
@@ -257,12 +299,15 @@
           "time": "19:30",
           "type": "food",
           "title": "陳玉華奶奶一隻雞",
-          "note": "종로40가길 18"
+          "note": "종로40가길 18",
+          "mapUrl": "https://www.google.com/maps/search/?api=1&query=37.57035%2C127.0057389",
+          "link": "https://naver.me/GgWdTeJA"
         },
         {
           "time": "21:30",
           "type": "hotel",
-          "title": "住宿 聖水洞 Airbnb"
+          "title": "住宿 聖水洞 Airbnb",
+          "mapUrl": "https://maps.app.goo.gl/qJejKdSSC5ek4gjz8"
         }
       ]
     },
@@ -282,13 +327,17 @@
           "time": "10:00",
           "type": "food",
           "title": "咖啡廳 Stand Bread",
-          "note": "성수이로18길 37 1층"
+          "note": "성수이로18길 37 1층",
+          "mapUrl": "https://www.google.com/maps/search/?api=1&query=37.5416507%2C127.0611439",
+          "link": "https://naver.me/G9rLQAkq"
         },
         {
           "time": "12:00",
           "type": "food",
           "title": "熊熊麵包",
-          "note": "연무장길 38-2 1층"
+          "note": "연무장길 38-2 1층",
+          "mapUrl": "https://www.google.com/maps/search/?api=1&query=37.5428147%2C127.0537556",
+          "link": "https://naver.me/x8t2K4a5"
         },
         {
           "time": "15:00",
@@ -323,25 +372,31 @@
         {
           "time": "08:30",
           "type": "hotel",
-          "title": "check out"
+          "title": "check out",
+          "mapUrl": "https://maps.app.goo.gl/qJejKdSSC5ek4gjz8"
         },
         {
           "time": "10:00",
           "type": "food",
           "title": "弘大 - 咖啡廳",
-          "note": "Grey館 https://naver.me/Fio9RO5a／延南洞Beotkkot家 https://naver.me/IDFymFom／Magaret延南 https://naver.me/xX7YXdZr／Seumolleok蛋糕 https://naver.me/FUh70AR3／清水塘Gongmyeong https://naver.me/FqWojlGd／Joaen Doseun https://naver.me/58NcuE88"
+          "note": "延南洞候選咖啡廳:Grey館 https://naver.me/Fio9RO5a｜延南洞Beotkkot家 https://naver.me/IDFymFom｜Magaret延南 https://naver.me/xX7YXdZr｜Seumolleok蛋糕 https://naver.me/FUh70AR3｜清水塘Gongmyeong https://naver.me/FqWojlGd｜Joaen Doseun https://naver.me/58NcuE88",
+          "link": "https://naver.me/Fio9RO5a"
         },
         {
           "time": "12:00",
           "type": "food",
           "title": "午餐（弘大）JANGIN DAKGALBI",
-          "note": "168cm 弘益大學店 https://naver.me/FvEaxQQD"
+          "note": "168cm 弘益大學店",
+          "mapUrl": "https://www.google.com/maps/search/?api=1&query=%EC%9E%A5%EC%9D%B8%EB%8B%AD%EA%B0%88%EB%B9%84%20%ED%99%8D%EB%8C%80",
+          "link": "https://naver.me/FvEaxQQD"
         },
         {
           "time": "15:00",
           "type": "transport",
           "title": "準備搭車去機場",
-          "note": "上車地點 弘大星巴克 양화로 165 상진빌딩 1층"
+          "note": "上車地點 弘大星巴克 양화로 165 상진빌딩 1층",
+          "mapUrl": "https://www.google.com/maps/search/?api=1&query=37.5573026%2C126.9236949",
+          "link": "https://naver.me/xHgOfB3E"
         },
         {
           "time": "16:00",

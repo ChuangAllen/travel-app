@@ -32,12 +32,15 @@
         {
           "time": "21:00",
           "type": "food",
-          "title": "好吃炸雞 Jin貞辣炸雞"
+          "title": "好吃炸雞 Jin貞辣炸雞",
+          "mapUrl": "https://www.google.com/maps/search/?api=1&query=35.1553069%2C129.1174098",
+          "link": "https://naver.me/IDFvNHwM"
         },
         {
           "time": "23:30",
           "type": "hotel",
-          "title": "住宿 廣安里海邊 Airbnb"
+          "title": "住宿 廣安里海邊 Airbnb",
+          "mapUrl": "https://maps.app.goo.gl/szdTidedANuXafXa6"
         }
       ]
     },
@@ -55,24 +58,29 @@
         {
           "time": "11:00",
           "type": "sightseeing",
-          "title": "白淺灘文化村"
+          "title": "白淺灘文化村",
+          "mapUrl": "https://www.google.com/maps/search/?api=1&query=%ED%9D%B0%EC%97%AC%EC%9A%B8%EB%AC%B8%ED%99%94%EB%A7%88%EC%9D%84"
         },
         {
           "time": "13:00",
           "type": "sightseeing",
           "title": "南浦洞",
-          "note": "BIFF 廣場"
+          "note": "BIFF 廣場",
+          "mapUrl": "https://maps.app.goo.gl/9R21fbDb5A8nqfsUA"
         },
         {
           "time": "13:30",
           "type": "food",
           "title": "味贊王鹽烤肉",
-          "note": "未去 李在模 PIZZA"
+          "note": "未去 李在模 PIZZA",
+          "mapUrl": "https://maps.app.goo.gl/o6TWntCiCnyhSVUM8",
+          "link": "https://maps.app.goo.gl/8S5jdrx2ecobQb1B6"
         },
         {
           "time": "17:00",
           "type": "food",
-          "title": "咖啡廳 Coffee Bubu"
+          "title": "咖啡廳 Coffee Bubu",
+          "mapUrl": "https://maps.app.goo.gl/4N5r7zkDe9EkhwR46"
         },
         {
           "time": "19:30",
@@ -82,13 +90,15 @@
         {
           "time": "20:40",
           "type": "activity",
-          "title": "報到 No.4 Suyeongman Bay Center"
+          "title": "報到 No.4 Suyeongman Bay Center",
+          "mapUrl": "https://maps.app.goo.gl/b6RDP8qGGEkErUGx6"
         },
         {
           "time": "21:00",
           "type": "activity",
           "title": "遊艇",
-          "pass": "VISIT BUSAN PASS"
+          "pass": "VISIT BUSAN PASS",
+          "mapUrl": "https://maps.app.goo.gl/b6RDP8qGGEkErUGx6"
         }
       ]
     },
@@ -106,44 +116,54 @@
         {
           "time": "09:00",
           "type": "activity",
-          "title": "抵達排隊 尾浦 Mipo"
+          "title": "抵達排隊 尾浦 Mipo",
+          "mapUrl": "https://maps.app.goo.gl/43CUcEFiC2BqYpa1A"
         },
         {
           "time": "09:30",
           "type": "activity",
-          "title": "膠囊列車 - 尾浦"
+          "title": "膠囊列車 - 尾浦",
+          "mapUrl": "https://maps.app.goo.gl/43CUcEFiC2BqYpa1A"
         },
         {
           "time": "11:00",
           "type": "activity",
-          "title": "海岸列車 - 青沙浦"
+          "title": "海岸列車 - 青沙浦",
+          "mapUrl": "https://www.google.com/maps/search/?api=1&query=%ED%95%B4%EC%9A%B4%EB%8C%80%20%EB%B8%94%EB%A3%A8%EB%9D%BC%EC%9D%B8%ED%8C%8C%ED%81%AC%20%EC%B2%AD%EC%82%AC%ED%8F%AC%EC%A0%95%EA%B1%B0%EC%9E%A5"
         },
         {
           "time": "11:30",
           "type": "food",
-          "title": "咖啡廳 Rendez-vous Haeundae"
+          "title": "咖啡廳 Rendez-vous Haeundae",
+          "mapUrl": "https://maps.app.goo.gl/4N8VtAFBVg1eHtYP6"
         },
         {
           "time": "13:00",
           "type": "food",
           "title": "自然島鹽麵包",
-          "note": "BUSAN X the SKY"
+          "note": "BUSAN X the SKY",
+          "mapUrl": "https://maps.app.goo.gl/ebY1dEDQyA8zhTFG9",
+          "link": "https://maps.app.goo.gl/W6a8a4KCYNJqi6no7"
         },
         {
           "time": "13:30",
           "type": "food",
-          "title": "味贊王鹽烤肉 海雲台店"
+          "title": "味贊王鹽烤肉 海雲台店",
+          "mapUrl": "https://maps.app.goo.gl/dBnothGgiyBbEA6a7"
         },
         {
           "time": "14:00",
           "type": "sightseeing",
-          "title": "海雲台散步"
+          "title": "海雲台散步",
+          "mapUrl": "https://www.google.com/maps/search/?api=1&query=%ED%95%B4%EC%9A%B4%EB%8C%80%ED%95%B4%EC%88%98%EC%9A%95%EC%9E%A5"
         },
         {
           "time": "15:30",
           "type": "shopping",
           "title": "新世界百貨",
-          "note": "汗蒸幕 SPA LAND Centum City"
+          "note": "汗蒸幕 SPA LAND Centum City",
+          "mapUrl": "https://maps.app.goo.gl/7CPj5wsMi9d4nm4K7",
+          "link": "https://maps.app.goo.gl/ttHxQmskoA79WdH28"
         },
         {
           "time": "21:00",
@@ -162,29 +182,36 @@
           "time": "10:00",
           "type": "sightseeing",
           "title": "廣安里",
-          "note": "人生拍貼機 Analogue"
+          "note": "人生拍貼機 Analogue",
+          "mapUrl": "https://www.google.com/maps/search/?api=1&query=35.1549238%2C129.1185185",
+          "link": "https://naver.me/xSFXLLqr"
         },
         {
           "time": "12:00",
           "type": "sightseeing",
           "title": "西面",
-          "note": "樂天百貨 B1 放行李 3 小時免費"
+          "note": "樂天百貨 B1 放行李 3 小時免費",
+          "mapUrl": "https://maps.app.goo.gl/rpabu2BSmvdQcPQc9"
         },
         {
           "time": "12:30",
           "type": "food",
-          "title": "機張手工切麵"
+          "title": "機張手工切麵",
+          "mapUrl": "https://maps.app.goo.gl/p2TmKA9tx5mbN2kRA"
         },
         {
           "time": "13:00",
           "type": "shopping",
           "title": "逛街",
-          "note": "韓版 UQ、musinsa standard／明信片 Poset Jeonpo"
+          "note": "韓版 UQ、musinsa standard／明信片 Poset Jeonpo",
+          "mapUrl": "https://maps.app.goo.gl/awq63nWqhXVBiG356",
+          "link": "https://maps.app.goo.gl/zxepM7jpGZtzDenH6"
         },
         {
           "time": "15:00",
           "type": "food",
-          "title": "咖啡廳 moody bread market"
+          "title": "咖啡廳 moody bread market",
+          "mapUrl": "https://maps.app.goo.gl/aCj7x6j3LT76efia9"
         },
         {
           "time": "17:00",

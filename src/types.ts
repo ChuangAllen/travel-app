@@ -30,6 +30,7 @@ export interface ItineraryItem {
   note?: string;
   pass?: string;
   mapUrl?: string;
+  link?: string;
 }
 
 export interface ItineraryDay {

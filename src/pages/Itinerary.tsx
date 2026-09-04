@@ -45,16 +45,19 @@ export default function Itinerary() {
                     {it.pass && <span className="badge">{it.pass}</span>}
                   </div>
                   {it.note && <div className="note">{it.note}</div>}
-                  {it.mapUrl && (
-                    <a
-                      className="note"
-                      href={it.mapUrl}
-                      target="_blank"
-                      rel="noreferrer"
-                      style={{ color: "var(--accent)" }}
-                    >
-                      📍 在 Google 地圖開啟
-                    </a>
+                  {(it.mapUrl || it.link) && (
+                    <div className="item-links">
+                      {it.mapUrl && (
+                        <a href={it.mapUrl} target="_blank" rel="noreferrer">
+                          📍 在 Google 地圖開啟
+                        </a>
+                      )}
+                      {it.link && (
+                        <a href={it.link} target="_blank" rel="noreferrer">
+                          🔗 開啟連結
+                        </a>
+                      )}
+                    </div>
                   )}
                 </div>
               </div>

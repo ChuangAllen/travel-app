@@ -1,0 +1,324 @@
+{
+  "lang": "en",
+  "categories": [
+    {
+      "key": "basic",
+      "label": "基本",
+      "phrases": [
+        {
+          "zh": "你好",
+          "target": "Hello",
+          "roman": "哈囉"
+        },
+        {
+          "zh": "謝謝",
+          "target": "Thank you",
+          "roman": "三Q"
+        },
+        {
+          "zh": "不好意思（喚人）",
+          "target": "Excuse me",
+          "roman": "伊斯Q斯米"
+        },
+        {
+          "zh": "對不起",
+          "target": "I'm sorry",
+          "roman": "阿姆 搜瑞"
+        },
+        {
+          "zh": "是／對",
+          "target": "Yes",
+          "roman": "耶斯"
+        },
+        {
+          "zh": "不是",
+          "target": "No",
+          "roman": "弄"
+        },
+        {
+          "zh": "我不會英文",
+          "target": "I don't speak English",
+          "roman": "阿 動特 斯批克 英格利許"
+        },
+        {
+          "zh": "請說慢一點",
+          "target": "Please speak slowly",
+          "roman": "普利斯 斯批克 斯洛利"
+        },
+        {
+          "zh": "請幫我",
+          "target": "Can you help me?",
+          "roman": "肯 U 黑普 米"
+        },
+        {
+          "zh": "沒關係",
+          "target": "It's okay",
+          "roman": "依次 歐開"
+        }
+      ]
+    },
+    {
+      "key": "transport",
+      "label": "交通",
+      "phrases": [
+        {
+          "zh": "這個多少錢？",
+          "target": "How much is this?",
+          "roman": "好 罵區 伊斯 利斯"
+        },
+        {
+          "zh": "請到這個地址",
+          "target": "To this address, please",
+          "roman": "兔 利斯 A准斯 普利斯"
+        },
+        {
+          "zh": "請開跳表",
+          "target": "Please use the meter",
+          "roman": "普利斯 又斯 惹 米特"
+        },
+        {
+          "zh": "地鐵站在哪裡？",
+          "target": "Where is the subway station?",
+          "roman": "威爾 伊斯 惹 薩布威 斯得訊"
+        },
+        {
+          "zh": "我要去這裡",
+          "target": "I want to go here",
+          "roman": "阿 望特 兔 購 黑爾"
+        },
+        {
+          "zh": "請在這裡停車",
+          "target": "Stop here, please",
+          "roman": "斯搭普 黑爾 普利斯"
+        }
+      ]
+    },
+    {
+      "key": "place",
+      "label": "地點",
+      "phrases": [
+        {
+          "zh": "洗手間在哪裡？",
+          "target": "Where is the toilet?",
+          "roman": "威爾 伊斯 惹 拖伊列特"
+        },
+        {
+          "zh": "入口／出口",
+          "target": "Entrance / Exit",
+          "roman": "恩穿斯 / 誒個季特"
+        },
+        {
+          "zh": "這附近有…嗎？",
+          "target": "Is there a … near here?",
+          "roman": "伊斯 淚兒 A … 尼兒 黑爾"
+        },
+        {
+          "zh": "走路要多久？",
+          "target": "How long does it take to walk?",
+          "roman": "好 龍 打斯 伊特 鐵克 兔 沃克"
+        },
+        {
+          "zh": "請問怎麼走？",
+          "target": "How do I get there?",
+          "roman": "好 賭 阿 給特 淚兒"
+        }
+      ]
+    },
+    {
+      "key": "sightseeing",
+      "label": "景點",
+      "phrases": [
+        {
+          "zh": "幾點開門／關門？",
+          "target": "What time does it open / close?",
+          "roman": "華特 太姆 打斯 伊特 歐噴 / 克落斯"
+        },
+        {
+          "zh": "可以拍照嗎？",
+          "target": "Can I take a photo?",
+          "roman": "肯 阿 鐵克 A 佛拖"
+        },
+        {
+          "zh": "門票多少錢？",
+          "target": "How much is the ticket?",
+          "roman": "好 罵區 伊斯 惹 踢K特"
+        },
+        {
+          "zh": "有中文導覽嗎？",
+          "target": "Is there a Chinese guide?",
+          "roman": "伊斯 淚兒 A 差伊尼斯 蓋德"
+        }
+      ]
+    },
+    {
+      "key": "facility",
+      "label": "設施",
+      "phrases": [
+        {
+          "zh": "有置物櫃嗎？",
+          "target": "Is there a locker?",
+          "roman": "伊斯 淚兒 A 落客"
+        },
+        {
+          "zh": "可以退稅嗎？",
+          "target": "Can I get a tax refund?",
+          "roman": "肯 阿 給特 A 泰克斯 瑞方德"
+        },
+        {
+          "zh": "電梯在哪？",
+          "target": "Where is the elevator?",
+          "roman": "威爾 伊斯 惹 誒勒維特"
+        },
+        {
+          "zh": "Wi-Fi 密碼是多少？",
+          "target": "What's the Wi-Fi password?",
+          "roman": "華茲 惹 壞發 帕斯我德"
+        },
+        {
+          "zh": "可以借充電器嗎？",
+          "target": "Can I borrow a charger?",
+          "roman": "肯 阿 巴弱 A 差著"
+        }
+      ]
+    },
+    {
+      "key": "food",
+      "label": "餐飲",
+      "phrases": [
+        {
+          "zh": "請給我菜單",
+          "target": "Menu, please",
+          "roman": "面U 普利斯"
+        },
+        {
+          "zh": "不要辣",
+          "target": "Not spicy, please",
+          "roman": "那特 斯拜西 普利斯"
+        },
+        {
+          "zh": "這個是什麼？",
+          "target": "What is this?",
+          "roman": "華特 伊斯 利斯"
+        },
+        {
+          "zh": "結帳",
+          "target": "Check, please",
+          "roman": "切克 普利斯"
+        },
+        {
+          "zh": "可以打包嗎？",
+          "target": "Can I take it away?",
+          "roman": "肯 阿 鐵克 伊特 A威"
+        },
+        {
+          "zh": "推薦什麼？",
+          "target": "What do you recommend?",
+          "roman": "華特 賭 U 瑞克門德"
+        },
+        {
+          "zh": "我要一份這個",
+          "target": "One of these, please",
+          "roman": "萬 歐夫 利斯 普利斯"
+        }
+      ]
+    },
+    {
+      "key": "shopping",
+      "label": "購物",
+      "phrases": [
+        {
+          "zh": "可以試穿嗎？",
+          "target": "Can I try it on?",
+          "roman": "肯 阿 踹 伊特 昂"
+        },
+        {
+          "zh": "有其他顏色嗎？",
+          "target": "Do you have other colors?",
+          "roman": "賭 U 黑夫 阿惹 卡勒斯"
+        },
+        {
+          "zh": "可以便宜一點嗎？",
+          "target": "Can you give me a discount?",
+          "roman": "肯 U 給夫 米 A 迪斯考恩特"
+        },
+        {
+          "zh": "可以刷卡嗎？",
+          "target": "Can I pay by card?",
+          "roman": "肯 阿 佩 拜 卡德"
+        },
+        {
+          "zh": "請給我收據",
+          "target": "Receipt, please",
+          "roman": "瑞西特 普利斯"
+        }
+      ]
+    },
+    {
+      "key": "lodging",
+      "label": "住宿",
+      "phrases": [
+        {
+          "zh": "我要 check-in／check-out",
+          "target": "Check-in / check-out, please",
+          "roman": "切克因 / 切克奧特 普利斯"
+        },
+        {
+          "zh": "可以寄放行李嗎？",
+          "target": "Can I leave my luggage here?",
+          "roman": "肯 阿 立夫 麥 拉給居 黑爾"
+        },
+        {
+          "zh": "房間請幫忙打掃",
+          "target": "Please clean the room",
+          "roman": "普利斯 克林 惹 潤姆"
+        },
+        {
+          "zh": "冷氣壞了",
+          "target": "The air conditioner is broken",
+          "roman": "惹 A兒 康迪訊那 伊斯 布落肯"
+        },
+        {
+          "zh": "幾點退房？",
+          "target": "What time is check-out?",
+          "roman": "華特 太姆 伊斯 切克奧特"
+        }
+      ]
+    },
+    {
+      "key": "emergency",
+      "label": "緊急",
+      "phrases": [
+        {
+          "zh": "請幫我（緊急）",
+          "target": "Help me, please!",
+          "roman": "黑普 米 普利斯"
+        },
+        {
+          "zh": "我需要醫生",
+          "target": "I need a doctor",
+          "roman": "阿 尼德 A 搭克特"
+        },
+        {
+          "zh": "請叫救護車",
+          "target": "Call an ambulance",
+          "roman": "摳 恩 安布蘭斯"
+        },
+        {
+          "zh": "我的錢包不見了",
+          "target": "I lost my wallet",
+          "roman": "阿 落斯特 麥 沃列特"
+        },
+        {
+          "zh": "這裡痛",
+          "target": "It hurts here",
+          "roman": "伊特 赫茲 黑爾"
+        },
+        {
+          "zh": "報警",
+          "target": "Call the police",
+          "roman": "摳 惹 波利斯"
+        }
+      ]
+    }
+  ]
+}
