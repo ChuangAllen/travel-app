@@ -31,6 +31,14 @@
           "mapUrl": "https://www.google.com/maps/search/?api=1&query=%EA%B9%80%ED%95%B4%EA%B5%AD%EC%A0%9C%EA%B3%B5%ED%95%AD"
         },
         {
+          "time": "20:10",
+          "type": "route",
+          "title": "金海機場 → 廣安里",
+          "note": "1F 入境大廳出來左轉計程車招呼站\n上車出示廣安里 Airbnb 地址\n注意跳表、拿收據",
+          "duration": "約 40 分",
+          "link": "https://www.google.com/maps/dir/?api=1&origin=Gimhae+Airport&destination=Gwangalli&travelmode=driving"
+        },
+        {
           "time": "20:40",
           "type": "transport",
           "title": "出關 → 計程車到廣安里",

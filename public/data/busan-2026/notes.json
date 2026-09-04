@@ -1,0 +1,23 @@
+{
+  "tripSlug": "busan-2026",
+  "notes": [
+    {
+      "title": "機票 ✈️",
+      "status": "done"
+    },
+    {
+      "title": "住宿 🏠",
+      "status": "done"
+    },
+    {
+      "title": "VISIT BUSAN PASS",
+      "status": "todo",
+      "detail": "出發前線上購買\n抵達後到服務中心換實體卡"
+    },
+    {
+      "title": "eSIM 網卡",
+      "status": "todo",
+      "detail": "出發前先買一張（吃到飽）"
+    }
+  ]
+}

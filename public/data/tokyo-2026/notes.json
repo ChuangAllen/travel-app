@@ -1,0 +1,56 @@
+{
+  "tripSlug": "tokyo-2026",
+  "notes": [
+    {
+      "title": "機票 ✈️",
+      "status": "done"
+    },
+    {
+      "title": "住宿 🏠",
+      "status": "done"
+    },
+    {
+      "title": "河口湖交通 🚇",
+      "status": "done",
+      "detail": "新宿 → 河口湖 已訂\n河口湖 → 新宿 已訂"
+    },
+    {
+      "title": "河口湖租車 🚗",
+      "status": "done",
+      "detail": "Budget 租車"
+    },
+    {
+      "title": "河口湖水陸兩用巴士 🚌",
+      "status": "cancelled",
+      "detail": "水不夠，停駛中"
+    },
+    {
+      "title": "機場來回交通 🚇",
+      "status": "done",
+      "detail": "去程 skyliner\n回程 skyliner"
+    },
+    {
+      "title": "迪士尼海洋 Klook 🎠",
+      "status": "done"
+    },
+    {
+      "title": "teamLab Borderless 六本木",
+      "status": "done"
+    },
+    {
+      "title": "燒肉 Ushigoro 銀座並木通店",
+      "status": "todo",
+      "detail": "4/28 21:00（晚鳥優惠）極致套餐"
+    },
+    {
+      "title": "牛たん荒 新宿西口店",
+      "status": "todo",
+      "detail": "富士回遊出票後訂"
+    },
+    {
+      "title": "eSIM 吃到飽 5 天 🛜",
+      "status": "todo",
+      "detail": "先買一人"
+    }
+  ]
+}

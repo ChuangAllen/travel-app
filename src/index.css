@@ -207,6 +207,23 @@ a {
   border-bottom: none;
 }
 
+/* 路線 / 轉乘段:與景點卡片視覺區隔 */
+.item.route {
+  background: color-mix(in srgb, var(--green-soft) 40%, transparent);
+  border-radius: 10px;
+  padding: 10px 12px;
+  margin: 6px 0;
+  border-bottom: none;
+}
+.item.route .body .title {
+  color: var(--green);
+  font-weight: 600;
+}
+.badge.dur {
+  background: transparent;
+  border: 1px solid var(--green-soft);
+}
+
 .item .time {
   font-variant-numeric: tabular-nums;
   color: var(--green);
@@ -225,6 +242,35 @@ a {
   font-size: 12px;
   margin-top: 2px;
   white-space: pre-line;
+}
+
+.note-row {
+  display: flex;
+  gap: 8px;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--green-soft);
+}
+.note-row:last-child {
+  border-bottom: 0;
+}
+.note-row .note-icon {
+  font-size: 14px;
+  line-height: 1.5;
+}
+.note-row .title.strike {
+  text-decoration: line-through;
+  color: var(--muted);
+}
+
+.day-photo {
+  display: block;
+  width: 100%;
+  border-radius: 14px;
+  margin: 10px 0 0;
+}
+
+.day-photo:last-child {
+  margin-bottom: 4px;
 }
 
 .item .body .item-links {

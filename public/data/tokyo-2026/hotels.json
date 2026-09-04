@@ -1,0 +1,33 @@
+{
+  "tripSlug": "tokyo-2026",
+  "stays": [
+    {
+      "name": "艾德蒙大都會大飯店（JR 東日本）",
+      "area": "飯田橋・千代田區",
+      "checkIn": "2026-04-28",
+      "checkOut": "2026-04-30",
+      "nights": 2,
+      "address": "3 Chome-10-8, Iidabashi, 千代田區, 102-0072 東京都",
+      "mapUrl": "https://www.google.com/maps/search/?api=1&query=%E3%83%9B%E3%83%86%E3%83%AB%E3%83%A1%E3%83%88%E3%83%AD%E3%83%9D%E3%83%AA%E3%82%BF%E3%83%B3%E3%82%A8%E3%83%89%E3%83%A2%E3%83%B3%E3%83%88",
+      "note": "Day1、2 入住（入住 15:00 / 退房 11:00）"
+    },
+    {
+      "name": "MYSTAYS 富士山展望溫泉飯店",
+      "area": "河口湖・富士",
+      "checkIn": "2026-04-30",
+      "checkOut": "2026-05-01",
+      "nights": 1,
+      "mapUrl": "https://www.google.com/maps/search/?api=1&query=HOTEL%20MYSTAYS%20Fuji%20Onsen%20Resort",
+      "note": "Day3 入住"
+    },
+    {
+      "name": "新宿華盛頓飯店 附樓",
+      "area": "新宿",
+      "checkIn": "2026-05-01",
+      "checkOut": "2026-05-02",
+      "nights": 1,
+      "mapUrl": "https://www.google.com/maps/search/?api=1&query=Shinjuku%20Washington%20Hotel%20Annex",
+      "note": "Day4 入住"
+    }
+  ]
+}

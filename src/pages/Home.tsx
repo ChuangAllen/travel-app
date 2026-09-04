@@ -1,7 +1,14 @@
 import { useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
-import { fetchTrips, fetchItinerary } from "../lib/content";
+import { fetchTrips, fetchItinerary, fetchNotes } from "../lib/content";
 import { hasSupabase } from "../lib/supabase";
+import type { NoteStatus } from "../types";
+
+const noteIcon: Record<NoteStatus, string> = {
+  done: "✔️",
+  todo: "🔜",
+  cancelled: "✖️"
+};
 
 function localTime(tz: string) {
   return new Intl.DateTimeFormat("zh-TW", {
@@ -19,6 +26,10 @@ export default function Home() {
   const { data: itin } = useQuery({
     queryKey: ["itinerary", slug],
     queryFn: () => fetchItinerary(slug)
+  });
+  const { data: notes } = useQuery({
+    queryKey: ["notes", slug],
+    queryFn: () => fetchNotes(slug)
   });
 
   const today = new Date().toISOString().slice(0, 10);
@@ -41,6 +52,27 @@ export default function Home() {
           ))}
         </div>
       </div>
+
+      {notes?.notes.length ? (
+        <>
+          <div className="section-title">行前準備 📝</div>
+          <div className="card">
+            {notes.notes.map((n, i) => (
+              <div className="note-row" key={i}>
+                <span className="note-icon">{noteIcon[n.status]}</span>
+                <div className="body">
+                  <div
+                    className={n.status === "cancelled" ? "title strike" : "title"}
+                  >
+                    {n.title}
+                  </div>
+                  {n.detail && <div className="note">{n.detail}</div>}
+                </div>
+              </div>
+            ))}
+          </div>
+        </>
+      ) : null}
 
       <div className="section-title">今日行程</div>
       <div className="card">

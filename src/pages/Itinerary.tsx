@@ -1,7 +1,7 @@
 import { useMemo, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
-import { fetchItinerary } from "../lib/content";
+import { fetchItinerary, assetUrl } from "../lib/content";
 import type { ItineraryDay, ItineraryItemType } from "../types";
 
 const dot: Record<ItineraryItemType, string> = {
@@ -11,7 +11,8 @@ const dot: Record<ItineraryItemType, string> = {
   activity: "🎡",
   shopping: "🛍️",
   hotel: "🏨",
-  note: "📌"
+  note: "📌",
+  route: "🔁"
 };
 
 function mdLabel(date: string): string {
@@ -19,8 +20,10 @@ function mdLabel(date: string): string {
   return m ? `${Number(m[1])}/${Number(m[2])}` : date;
 }
 
-function linkLabel(u: string): string {
-  if (/maps\.app\.goo\.gl|google\.[^/]+\/maps/i.test(u)) return "🗺 Google 地圖";
+function linkLabel(u: string, isRoute = false): string {
+  const isMap = /maps\.app\.goo\.gl|google\.[^/]+\/maps/i.test(u);
+  if (isRoute && isMap) return "🗺 路線";
+  if (isMap) return "🗺 Google 地圖";
   if (/naver\./i.test(u)) return "🗺 Naver 地圖";
   return "🔗 開啟連結";
 }
@@ -42,13 +45,16 @@ function DayBlock({ day }: { day: ItineraryDay }) {
       </div>
       <div className="card">
         {day.items.map((it, i) => (
-          <div className="item" key={i}>
+          <div className={it.type === "route" ? "item route" : "item"} key={i}>
             <div className="time">{it.time}</div>
             <div className="body">
               <div className="title">
                 <span className="type-dot">{dot[it.type]}</span>
                 {it.title}
                 {it.pass && <span className="badge">{it.pass}</span>}
+                {it.type === "route" && it.duration && (
+                  <span className="badge dur">🕒 {it.duration}</span>
+                )}
               </div>
               {it.note && <div className="note">{it.note}</div>}
               {(it.mapUrl || it.link) && (
@@ -60,7 +66,7 @@ function DayBlock({ day }: { day: ItineraryDay }) {
                   )}
                   {it.link && (
                     <a href={it.link} target="_blank" rel="noreferrer">
-                      {linkLabel(it.link)}
+                      {linkLabel(it.link, it.type === "route")}
                     </a>
                   )}
                 </div>
@@ -69,6 +75,15 @@ function DayBlock({ day }: { day: ItineraryDay }) {
           </div>
         ))}
       </div>
+      {day.images?.map((src, i) => (
+        <img
+          key={i}
+          className="day-photo"
+          src={assetUrl(src)}
+          alt={`Day${day.day} ${day.title} ${i + 1}`}
+          loading="lazy"
+        />
+      ))}
     </div>
   );
 }

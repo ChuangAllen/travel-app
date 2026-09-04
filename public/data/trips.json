@@ -44,6 +44,30 @@
     "status": "ended"
   },
   {
+    "slug": "tokyo-2026",
+    "name": "🐻🎋熊熊東京生日行🐻👶🏼",
+    "subtitle": "與寶寶的東京五日遊（生氣氣開心心）",
+    "emoji": "🐻",
+    "lang": "ja",
+    "startDate": "2026-04-28",
+    "endDate": "2026-05-02",
+    "cities": [
+      "東京",
+      "河口湖"
+    ],
+    "timezones": [
+      {
+        "label": "東京",
+        "tz": "Asia/Tokyo"
+      },
+      {
+        "label": "台北",
+        "tz": "Asia/Taipei"
+      }
+    ],
+    "status": "ended"
+  },
+  {
     "slug": "busan-2026",
     "name": "2026 釜山行",
     "emoji": "🇰🇷",

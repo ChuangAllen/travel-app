@@ -1,0 +1,406 @@
+{
+  "tripSlug": "tokyo-2026",
+  "days": [
+    {
+      "day": 1,
+      "date": "2026-04-28",
+      "weekday": "二",
+      "title": "台北 → 東京",
+      "items": [
+        {
+          "time": "02:30",
+          "type": "transport",
+          "title": "樹林出發 🚗"
+        },
+        {
+          "time": "03:00",
+          "type": "transport",
+          "title": "永和出發"
+        },
+        {
+          "time": "03:45",
+          "type": "transport",
+          "title": "抵達桃園機場 T1"
+        },
+        {
+          "time": "06:45",
+          "type": "transport",
+          "title": "桃園機場 T1 出發 🛫",
+          "note": "酷航 TR876"
+        },
+        {
+          "time": "11:15",
+          "type": "transport",
+          "title": "抵達 🛬 成田機場 T1"
+        },
+        {
+          "time": "12:00",
+          "type": "transport",
+          "title": "成田機場入境"
+        },
+        {
+          "time": "12:15",
+          "type": "route",
+          "title": "成田機場 → 六本木站",
+          "note": "第一航廈搭 Skyliner 往京成上野站\n轉搭日比谷線前往六本木站",
+          "duration": "1小時26分",
+          "link": "https://www.google.com/maps/dir/?api=1&origin=Narita+Airport+Terminal+1&destination=Roppongi+Station&travelmode=transit"
+        },
+        {
+          "time": "14:00",
+          "type": "food",
+          "title": "午餐 入鹿 TOKYO 拉麵（六本木）",
+          "note": "吃飯約 1 小時"
+        },
+        {
+          "time": "15:15",
+          "type": "route",
+          "title": "六本木站 → 神谷町站",
+          "note": "搭日比谷線往北春日部方向到神谷町站",
+          "duration": "15分",
+          "link": "https://www.google.com/maps/dir/?api=1&origin=Roppongi+Station&destination=Kamiyacho+Station&travelmode=transit"
+        },
+        {
+          "time": "15:30",
+          "type": "activity",
+          "title": "teamLab Borderless 麻布台之丘",
+          "note": "停留 2–2.5 小時",
+          "mapUrl": "https://www.google.com/maps/search/?api=1&query=teamLab%20Borderless%20Azabudai%20Hills"
+        },
+        {
+          "time": "17:00",
+          "type": "sightseeing",
+          "title": "麻布台之丘 森 JP Tower",
+          "note": "車程約 15 分",
+          "mapUrl": "https://www.google.com/maps/search/?api=1&query=Azabudai%20Hills%20Mori%20JP%20Tower"
+        },
+        {
+          "time": "18:00",
+          "type": "shopping",
+          "title": "銀座逛街",
+          "note": "LV 松屋銀座店\n銀座・伊東屋\nLOFT 百貨 / JINS\nATELIER MUJI GINZA",
+          "mapUrl": "https://www.google.com/maps/search/?api=1&query=Ginza"
+        },
+        {
+          "time": "21:30",
+          "type": "food",
+          "title": "晚餐 Ushigoro 銀座並木通店",
+          "note": "吃飯約 2 小時；21:00 晚鳥優惠・極致套餐",
+          "pass": "已訂位",
+          "mapUrl": "https://www.google.com/maps/search/?api=1&query=Ushigoro%20Ginza%20Namiki-dori"
+        },
+        {
+          "time": "22:30",
+          "type": "route",
+          "title": "銀座站 → 飯田橋站",
+          "note": "搭銀座線往淺草方向到日本橋站\n轉搭東西線往中野方向到飯田橋站（A5 出口）",
+          "duration": "20分",
+          "link": "https://www.google.com/maps/dir/?api=1&origin=Ginza+Station&destination=Iidabashi+Station&travelmode=transit"
+        },
+        {
+          "time": "23:30",
+          "type": "hotel",
+          "title": "入住 艾德蒙大都會大飯店"
+        }
+      ],
+      "images": [
+        "images/tokyo-2026/IMG_1188.jpg",
+        "images/tokyo-2026/IMG_1208.jpg",
+        "images/tokyo-2026/IMG_1209.jpg"
+      ]
+    },
+    {
+      "day": 2,
+      "date": "2026-04-29",
+      "weekday": "三",
+      "title": "迪士尼海洋（生日）",
+      "items": [
+        {
+          "time": "06:00",
+          "type": "transport",
+          "title": "出發 艾德蒙大都會大飯店"
+        },
+        {
+          "time": "06:15",
+          "type": "route",
+          "title": "飯田橋站 → 舞濱站",
+          "note": "搭有樂町線往新木場方向到新木場站\n轉搭京葉線到舞濱站\n轉搭迪士尼度假區線",
+          "duration": "65分",
+          "link": "https://www.google.com/maps/dir/?api=1&origin=Iidabashi+Station&destination=Maihama+Station&travelmode=transit"
+        },
+        {
+          "time": "07:30",
+          "type": "transport",
+          "title": "舞濱站（提早抵達迪士尼）"
+        },
+        {
+          "time": "09:00",
+          "type": "activity",
+          "title": "迪士尼海洋開園",
+          "note": "拿生日貼紙！\n搶 DPA / PP / EP，衝玩具總動員 / 驚魂古塔\nDPA：Rapunzel's Lantern Festival、Toy Story Mania!、Peter Pan's Never Land（每 1 小時更新）\nPP：Turtle Talk、Nemo & Friends SeaRider（每 2 小時更新）\nEP：Dreams Take Flight",
+          "pass": "Klook",
+          "mapUrl": "https://www.google.com/maps/search/?api=1&query=Tokyo%20DisneySea"
+        },
+        {
+          "time": "19:15",
+          "type": "activity",
+          "title": "遊行 地中海港灣「堅信！～夢想之海～」"
+        },
+        {
+          "time": "20:15",
+          "type": "activity",
+          "title": "煙火 全區域「眾彩滿夜空」"
+        },
+        {
+          "time": "21:00",
+          "type": "transport",
+          "title": "迪士尼離開"
+        },
+        {
+          "time": "21:10",
+          "type": "route",
+          "title": "舞濱站 → 仲御徒町站",
+          "note": "搭京葉線往東京方向到八丁堀\n轉搭日比谷線（灰）往南栗橋方向到仲御徒町站",
+          "duration": "50分",
+          "link": "https://www.google.com/maps/dir/?api=1&origin=Maihama+Station&destination=Naka-okachimachi+Station&travelmode=transit"
+        },
+        {
+          "time": "22:00",
+          "type": "food",
+          "title": "晚餐 鴨 to 蔥（御徒町）",
+          "mapUrl": "https://www.google.com/maps/search/?api=1&query=%E9%B4%A8to%E8%94%A5%20%E5%BE%A1%E5%BE%92%E7%94%BA"
+        },
+        {
+          "time": "22:20",
+          "type": "route",
+          "title": "御徒町站 → 水道橋站",
+          "note": "搭京濱東北線往大船方向到秋葉原\n轉搭中央總武線（黃）往三鷹方向到水道橋站",
+          "duration": "20分",
+          "link": "https://www.google.com/maps/dir/?api=1&origin=Okachimachi+Station&destination=Suidobashi+Station&travelmode=transit"
+        },
+        {
+          "time": "22:45",
+          "type": "hotel",
+          "title": "入住 艾德蒙大都會大飯店"
+        }
+      ],
+      "images": [
+        "images/tokyo-2026/IMG_1189.jpg",
+        "images/tokyo-2026/IMG_1190.jpg",
+        "images/tokyo-2026/IMG_1191.jpg",
+        "images/tokyo-2026/IMG_1192.jpg",
+        "images/tokyo-2026/IMG_1193.jpg",
+        "images/tokyo-2026/IMG_1194.jpg"
+      ]
+    },
+    {
+      "day": 3,
+      "date": "2026-04-30",
+      "weekday": "四",
+      "title": "河口湖",
+      "items": [
+        {
+          "time": "07:30",
+          "type": "transport",
+          "title": "出發 艾德蒙大都會大飯店"
+        },
+        {
+          "time": "07:45",
+          "type": "route",
+          "title": "水道橋站 → 新宿站",
+          "note": "搭中央總武線往三鷹方向到新宿站",
+          "duration": "16分",
+          "link": "https://www.google.com/maps/dir/?api=1&origin=Suidobashi+Station&destination=Shinjuku+Station&travelmode=transit"
+        },
+        {
+          "time": "10:00",
+          "type": "transport",
+          "title": "新宿車站",
+          "note": "可以買治一郎布丁 🍮\n取票（來回）！"
+        },
+        {
+          "time": "10:30",
+          "type": "transport",
+          "title": "新宿 → 河口湖 富士回遊 15 號",
+          "note": "座位 Car3 4C/4D\n中央本線（特急）第 9/10 月台",
+          "pass": "富士回遊"
+        },
+        {
+          "time": "12:24",
+          "type": "transport",
+          "title": "河口湖車站 抵達"
+        },
+        {
+          "time": "13:30",
+          "type": "transport",
+          "title": "Budget 租車公司 取車",
+          "mapUrl": "https://www.google.com/maps/search/?api=1&query=Budget%20Rent%20a%20Car%20Kawaguchiko%20Station"
+        },
+        {
+          "time": "14:00",
+          "type": "activity",
+          "title": "河口湖遊覽船 天晴",
+          "mapUrl": "https://www.google.com/maps/search/?api=1&query=%E6%B2%B3%E5%8F%A3%E6%B9%96%E9%81%8A%E8%A6%BD%E8%88%B9%20%E5%A4%A9%E6%99%B4"
+        },
+        {
+          "time": "15:00",
+          "type": "activity",
+          "title": "河口湖纜車（天上山公園）",
+          "mapUrl": "https://www.google.com/maps/search/?api=1&query=Mt.%20Fuji%20Panoramic%20Ropeway"
+        },
+        {
+          "time": "16:30",
+          "type": "shopping",
+          "title": "下吉田商店街",
+          "mapUrl": "https://www.google.com/maps/search/?api=1&query=%E4%B8%8B%E5%90%89%E7%94%B0%E5%95%86%E5%BA%97%E8%A1%97"
+        },
+        {
+          "time": "18:00",
+          "type": "note",
+          "title": "放鬆行程 / 逛街"
+        },
+        {
+          "time": "22:30",
+          "type": "hotel",
+          "title": "入住 MYSTAYS 富士山展望溫泉飯店"
+        }
+      ],
+      "images": [
+        "images/tokyo-2026/IMG_1195.jpg",
+        "images/tokyo-2026/IMG_1196.jpg",
+        "images/tokyo-2026/IMG_1197.jpg",
+        "images/tokyo-2026/IMG_1198.jpg",
+        "images/tokyo-2026/IMG_1199.jpg",
+        "images/tokyo-2026/IMG_1200.jpg",
+        "images/tokyo-2026/IMG_1201.jpg",
+        "images/tokyo-2026/IMG_1202.jpg"
+      ]
+    },
+    {
+      "day": 4,
+      "date": "2026-05-01",
+      "weekday": "五",
+      "title": "河口湖 → 東京",
+      "items": [
+        {
+          "time": "07:30",
+          "type": "transport",
+          "title": "出發 MYSTAYS 富士山展望溫泉飯店"
+        },
+        {
+          "time": "10:00",
+          "type": "food",
+          "title": "THE PARK 河口湖（咖啡）",
+          "note": "提早 30 分鐘排隊；租車 24H 還車",
+          "mapUrl": "https://www.google.com/maps/search/?api=1&query=THE%20PARK%20%E6%B2%B3%E5%8F%A3%E6%B9%96"
+        },
+        {
+          "time": "12:30",
+          "type": "transport",
+          "title": "加油"
+        },
+        {
+          "time": "13:00",
+          "type": "transport",
+          "title": "Budget 租車公司 還車"
+        },
+        {
+          "time": "14:09",
+          "type": "transport",
+          "title": "河口湖車站 → 新宿 富士回遊 32 號",
+          "note": "16:07 新宿車站抵達",
+          "pass": "富士回遊"
+        },
+        {
+          "time": "17:30",
+          "type": "food",
+          "title": "晚餐 牛たん荒（新宿西口）",
+          "mapUrl": "https://www.google.com/maps/search/?api=1&query=%E7%89%9B%E3%81%9F%E3%82%93%E8%8D%92%20%E6%96%B0%E5%AE%BF%E8%A5%BF%E5%8F%A3"
+        },
+        {
+          "time": "19:00",
+          "type": "shopping",
+          "title": "新宿逛街",
+          "note": "CITEN UNITED ARROWS\nBIC CAMERA 新宿東口站前店\n唐吉訶德 新宿東南口店"
+        },
+        {
+          "time": "22:30",
+          "type": "hotel",
+          "title": "入住 新宿華盛頓飯店 附樓"
+        }
+      ],
+      "images": [
+        "images/tokyo-2026/IMG_1203.jpg",
+        "images/tokyo-2026/IMG_1204.jpg",
+        "images/tokyo-2026/IMG_1205.jpg"
+      ]
+    },
+    {
+      "day": 5,
+      "date": "2026-05-02",
+      "weekday": "六",
+      "title": "東京 → 台北",
+      "items": [
+        {
+          "time": "07:30",
+          "type": "transport",
+          "title": "出發 新宿華盛頓飯店 附樓"
+        },
+        {
+          "time": "08:00",
+          "type": "note",
+          "title": "新宿南口 小田急服務中心 寄放行李",
+          "note": "ecbo cloak 預約；17:15 回此取行李",
+          "mapUrl": "https://www.google.com/maps/search/?api=1&query=Odakyu%20Sightseeing%20Service%20Center%20Shinjuku%20South%20Exit"
+        },
+        {
+          "time": "09:00",
+          "type": "sightseeing",
+          "title": "豪德寺 貓咪神社 ⛩️",
+          "mapUrl": "https://www.google.com/maps/search/?api=1&query=Gotokuji%20Temple"
+        },
+        {
+          "time": "11:00",
+          "type": "shopping",
+          "title": "原宿 / 表參道逛街",
+          "note": "RockFish\ncas:pace\nNiko and…",
+          "mapUrl": "https://www.google.com/maps/search/?api=1&query=Omotesando"
+        },
+        {
+          "time": "17:15",
+          "type": "note",
+          "title": "新宿南口 小田急服務中心 取行李"
+        },
+        {
+          "time": "17:20",
+          "type": "route",
+          "title": "新宿 → 成田機場 T1",
+          "note": "新宿搭 N'EX（成田特快）直達成田機場",
+          "duration": "約 55分",
+          "link": "https://www.google.com/maps/dir/?api=1&origin=Shinjuku+Station&destination=Narita+Airport+Terminal+1&travelmode=transit"
+        },
+        {
+          "time": "18:15",
+          "type": "transport",
+          "title": "抵達成田機場 T1"
+        },
+        {
+          "time": "21:15",
+          "type": "transport",
+          "title": "成田機場 T1 出發 🛫",
+          "note": "酷航 TR875"
+        },
+        {
+          "time": "23:55",
+          "type": "transport",
+          "title": "抵達 🛬 桃園機場 T1",
+          "note": "入境後開車回家（桃園 → 永和 → 樹林）"
+        }
+      ],
+      "images": [
+        "images/tokyo-2026/IMG_1206.jpg",
+        "images/tokyo-2026/IMG_1207.jpg"
+      ]
+    }
+  ]
+}

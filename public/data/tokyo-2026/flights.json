@@ -1,0 +1,37 @@
+{
+  "tripSlug": "tokyo-2026",
+  "segments": [
+    {
+      "kind": "outbound",
+      "flightNo": "TR876",
+      "airline": "酷航 Scoot",
+      "from": {
+        "code": "TPE",
+        "name": "桃園 T1"
+      },
+      "to": {
+        "code": "NRT",
+        "name": "成田 T1"
+      },
+      "departLocal": "06:45",
+      "arriveLocal": "11:15",
+      "note": "4/28 第一天"
+    },
+    {
+      "kind": "return",
+      "flightNo": "TR875",
+      "airline": "酷航 Scoot",
+      "from": {
+        "code": "NRT",
+        "name": "成田 T1"
+      },
+      "to": {
+        "code": "TPE",
+        "name": "桃園 T1"
+      },
+      "departLocal": "21:15",
+      "arriveLocal": "23:55",
+      "note": "5/2 第五天"
+    }
+  ]
+}

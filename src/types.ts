@@ -22,7 +22,8 @@ export type ItineraryItemType =
   | "activity"
   | "shopping"
   | "hotel"
-  | "note";
+  | "note"
+  | "route";
 
 export interface ItineraryItem {
   time: string;
@@ -30,6 +31,8 @@ export interface ItineraryItem {
   title: string;
   note?: string;
   pass?: string;
+  /** type=route:總車程,如「1小時26分」 */
+  duration?: string;
   mapUrl?: string;
   link?: string;
 }
@@ -40,6 +43,8 @@ export interface ItineraryDay {
   weekday?: string;
   title: string;
   items: ItineraryItem[];
+  /** 該日插圖(可多張):相對路徑 images/<slug>/dayN-i.jpg 或外部 URL */
+  images?: string[];
 }
 
 export interface Itinerary {
@@ -97,6 +102,19 @@ export interface Guide {
   tripSlug: string;
   sections: { key: string; label: string; items: string[] }[];
   reminder?: string;
+}
+
+export type NoteStatus = "done" | "todo" | "cancelled";
+
+export interface NoteItem {
+  title: string;
+  status: NoteStatus;
+  detail?: string;
+}
+
+export interface TripNotes {
+  tripSlug: string;
+  notes: NoteItem[];
 }
 
 export interface Phrases {

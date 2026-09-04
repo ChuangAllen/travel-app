@@ -34,7 +34,8 @@ const DB = {
   hotels: process.env.NOTION_HOTELS_DB_ID,
   transport: process.env.NOTION_TRANSPORT_DB_ID,
   guide: process.env.NOTION_GUIDE_DB_ID,
-  phrases: process.env.NOTION_PHRASES_DB_ID
+  phrases: process.env.NOTION_PHRASES_DB_ID,
+  notes: process.env.NOTION_NOTES_DB_ID
 };
 const OUT = join(process.cwd(), "public", "data");
 
@@ -92,6 +93,18 @@ async function queryAll(database_id: string, sorts?: any[]) {
     cursor = res.has_more ? res.next_cursor ?? undefined : undefined;
   } while (cursor);
   return rows;
+}
+
+/**
+ * 每日行程的「圖片」欄:純文字檔名清單(逗號 / 頓號 / 換行分隔),依序。
+ * 圖片檔由你自己放進 public/images/<slug>/,Notion 不存檔案(省流量)。
+ * - 純檔名 → images/<slug>/<檔名>
+ * - 已是 http(s) 網址 → 原樣使用
+ */
+function dayImagePaths(names: string[], slug: string): string[] {
+  return names.map((n) =>
+    /^https?:\/\//.test(n) ? n : `images/${slug}/${n}`
+  );
 }
 
 async function writeJson(relPath: string, data: unknown) {
@@ -171,19 +184,32 @@ async function syncItinerary() {
     if (!d.date) d.date = dStart(p["日期"]);
     if (!d.weekday) d.weekday = txt(p["星期"]) || undefined;
     if (!d.title) d.title = txt(p["當日主題"]);
+    for (const n of txt(p["圖片"])
+      .split(/[、,，\n]/)
+      .map((s) => s.trim())
+      .filter(Boolean)) {
+      (d._imgs ??= []).push(n);
+    }
     const item: any = { time: txt(p["時間"]), type: sel(p["類型"]) || "note", title: txt(p["標題"]) };
     if (txt(p["備註"])) item.note = txt(p["備註"]);
     if (txt(p["票券"])) item.pass = txt(p["票券"]);
+    if (txt(p["時長"])) item.duration = txt(p["時長"]);
     if (url(p["地圖"])) item.mapUrl = url(p["地圖"]);
     if (url(p["連結"])) item.link = url(p["連結"]);
     d.items.push(item);
   }
   for (const [slug, days] of bySlug) {
+    const ordered = [...days.values()].sort((a, b) => a.day - b.day);
+    for (const d of ordered) {
+      if (d._imgs?.length) d.images = dayImagePaths(d._imgs, slug);
+      delete d._imgs;
+    }
     await writeJson(`${slug}/itinerary.json`, {
       tripSlug: slug,
-      days: [...days.values()]
-        .sort((a, b) => a.day - b.day)
-        .map((d) => ({ ...d, items: d.items.sort((a: any, b: any) => a.time.localeCompare(b.time)) }))
+      days: ordered.map((d) => ({
+        ...d,
+        items: d.items.sort((a: any, b: any) => a.time.localeCompare(b.time))
+      }))
     });
   }
 }
@@ -337,6 +363,25 @@ async function syncPhrases() {
   }
 }
 
+async function syncNotes() {
+  if (!DB.notes) return console.log("略過 notes(未設 NOTION_NOTES_DB_ID)");
+  const rows = await queryAll(DB.notes);
+  const bySlug = groupBySlug(rows);
+  for (const [slug, list] of bySlug) {
+    list.sort(bySort);
+    const notes = list.map((r) => {
+      const p = r.properties;
+      const n: any = {
+        title: txt(p["項目"]),
+        status: (sel(p["狀態"]) || "todo") as "done" | "todo" | "cancelled"
+      };
+      if (txt(p["備註"])) n.detail = txt(p["備註"]);
+      return n;
+    });
+    await writeJson(`${slug}/notes.json`, { tripSlug: slug, notes });
+  }
+}
+
 async function main() {
   await syncTrips();
   await syncItinerary();
@@ -345,6 +390,7 @@ async function main() {
   await syncTransport();
   await syncGuide();
   await syncPhrases();
+  await syncNotes();
   console.log("完成。");
 }
 
