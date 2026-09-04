@@ -200,9 +200,11 @@ flowchart TD
 
 設定步驟：
 1. Repo Settings → Pages → Source 選 **GitHub Actions**。
-2. Repo Settings → Secrets 加 `VITE_SUPABASE_URL`、`VITE_SUPABASE_ANON_KEY`；內容同步再加 `NOTION_TOKEN` 與 7 個 `NOTION_*_DB_ID`（清單見 `doc/Issue.md` 項次 004）。
-3. Repo Settings → Actions → General → Workflow permissions 設 **Read and write**（`sync-notion.yml` 要 commit 回 repo）。
-4. push 到 `main` 即自動部署。
+2. （可選）Repo Settings → Secrets 加 `VITE_SUPABASE_URL`、`VITE_SUPABASE_ANON_KEY`。
+3. push 到 `main` 即自動 build 部署。
+
+> 內容同步目前是**本機手動**：`npm run sync:notion` 更新 `public/data/` → commit → push。
+> 之後要改成 Actions 自動同步，見 `doc/Issue.md` 項次 004。
 
 ---
 
@@ -260,10 +262,9 @@ Travel APP/
 | `src/main.tsx` | 路由與 Provider 組裝 |
 | `src/lib/content.ts` | 內容 JSON 讀取（所有頁面共用） |
 | `src/lib/supabase.ts` | Supabase client（無金鑰時優雅停用） |
-| `scripts/sync-notion.ts` | Notion → `public/data` 同步 |
+| `scripts/sync-notion.ts` | Notion → `public/data` 同步（目前**本機手動**跑，不在 Actions） |
 | `vite.config.ts` | PWA 與離線快取策略 |
-| `.github/workflows/deploy.yml` | GitHub Pages 部署 |
-| `.github/workflows/sync-notion.yml` | 內容定時同步 |
+| `.github/workflows/deploy.yml` | GitHub Pages 部署（唯一的 workflow） |
 
 ---
 
