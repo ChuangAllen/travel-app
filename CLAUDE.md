@@ -8,10 +8,11 @@
 - **多專案切換**：第一頁選行程（沖繩 / 泰國 / 釜山…），進入後看該行程內容
 - **每日行程**：逐時段安排，分類標記（交通 / 飲食 / 景點 / 遊玩 / 購物 / 住宿 / 備註），可帶 Google 地圖連結與票券徽章
 - **機票 / 住宿 / 交通**：航班、飯店、票券（如釜山 PASS）、乘車紀錄
-- **旅遊攻略 / 語言小卡**：簽證、入境、電壓、退稅、緊急聯絡；常用短句句庫
-- **使用者功能（規劃中）**：登入、記帳、分帳、平安回報、相簿上傳（Supabase）
+- **旅遊攻略 / 語言小卡**：簽證、入境、電壓、退稅、緊急聯絡；常用短句句庫（依語言共用）
+- **帳號登入 / 行程權限**：用「使用者代號」登入（Supabase Auth），同裝置一個月免重登；由管理者設定誰能看哪些行程（`is_admin` 看全部 / `trip_members` 逐列）
+- **使用者功能（規劃中）**：記帳、分帳、平安回報、相簿上傳（Supabase 表已就緒）
 - **離線可用**：PWA + Service Worker 快取，可「加入主畫面」
-- **內容由 Notion 控制**：以 Notion 為後台，GitHub Actions 同步成靜態 JSON
+- **內容由 Notion 控制**：以 Notion 為後台，`npm run sync:notion` 產生靜態 JSON（目前本機手動同步，見 `doc/Issue.md` 項次 005）
 
 ---
 
@@ -27,8 +28,8 @@
 | 使用者資料後端 | Supabase（PostgreSQL 17 + Auth + Storage，region `ap-northeast-2`） |
 | 內容後台 | Notion（`@notionhq/client`，僅用於同步腳本） |
 | 同步腳本執行 | tsx（`node --env-file=.env --import tsx`） |
-| 部署 | GitHub Pages（`.github/workflows/deploy.yml`） |
-| 內容同步 | GitHub Actions（`.github/workflows/sync-notion.yml`，每小時 + 手動） |
+| 部署 | GitHub Pages（`.github/workflows/deploy.yml`；repo 需 Public 才能免費用 Pages） |
+| 內容同步 | 本機 `npm run sync:notion` 後 commit / push（Actions 版 `sync-notion.yml` 已移除，見項次 005） |
 | Node 版本 | 20+（開發機實測 v24） |
 
 ---
@@ -52,16 +53,18 @@
                      │  瀏覽器 fetch（同網域靜態檔）
                      ▼
 ┌─ 前端 React（GitHub Pages 靜態站）──────────────────────┐
-│  /            選行程                                     │
-│  /t/:slug/*   首頁 / 行程 / 機票 / 住宿 / 交通 / 攻略 / 語言 │
+│  /login      使用者代號 + 密碼                           │
+│  /            選行程（依權限過濾）                        │
+│  /t/:slug/*   首頁 / 行程 / 機票 / 住宿 / 交通 / 攻略 / 語言 / 我的 │
 └────────────────────────────────────────────────────────┘
                      │  @supabase/supabase-js（瀏覽器直連，RLS 保護）
                      ▼
-┌─ 使用者資料（App 內寫入）──────────────────────────────┐
-│  Supabase：profiles / trip_members / expenses /         │
-│  expense_splits / safety_reports / sos_events /         │
-│  photos / packing_checks / message_receipts             │
+┌─ 使用者資料 + 權限（App 內寫入 / 管理者設定）──────────┐
+│  Supabase：profiles(is_admin) / trip_members /          │
+│  expenses / expense_splits / safety_reports /           │
+│  sos_events / photos / packing_checks / message_receipts│
 │  全表 RLS：僅能存取自己的資料（trip_slug 隔開不同行程） │
+│  登入用代號 → 補 @traveldemo.app 當 Auth 的 email        │
 └────────────────────────────────────────────────────────┘
 ```
 
@@ -87,30 +90,35 @@ Travel APP/
 │   ├── vite-env.d.ts                 # import.meta.env 型別
 │   ├── lib/
 │   │   ├── content.ts                # fetch public/data/*.json
-│   │   ├── supabase.ts               # createClient（無金鑰時優雅停用）
+│   │   ├── supabase.ts               # createClient（無金鑰時優雅停用；persistSession）
+│   │   ├── auth.tsx                  # AuthProvider + useAuth（登入 / 登出 / session）
+│   │   ├── members.ts               # fetchMyAccess()：is_admin + trip_members
+│   │   ├── config.ts                 # 使用者代號 ↔ Auth email 轉換
 │   │   └── trip.ts                   # localStorage 記住選過的行程
 │   └── pages/
-│       ├── TripPicker.tsx            # 第一頁：選行程
-│       ├── TripLayout.tsx            # 底部分頁殼 + 切換行程
+│       ├── Login.tsx                 # 使用者代號 + 密碼
+│       ├── TripPicker.tsx            # 選行程（依權限過濾、分「旅程中/即將開始/已結束」）
+│       ├── TripLayout.tsx            # 底部分頁殼 + 切換行程 + 未授權導回
 │       ├── Home.tsx                  # 雙時鐘、今日行程、工具卡
 │       ├── Itinerary.tsx             # 每日行程（類型圖示、地圖、票券）
 │       ├── Flights.tsx / Hotels.tsx / Transport.tsx
-│       └── Guide.tsx / Phrases.tsx
+│       ├── Guide.tsx / Phrases.tsx
+│       └── Mine.tsx                  # 「我的」：代號卡 + 功能列 + 登出
 │
 ├── public/
 │   ├── favicon.svg
-│   └── data/                         # 內容 JSON（手寫階段；接 Notion 後由 Actions 產生）
+│   └── data/                         # 內容 JSON（本機 sync:notion 產生後 commit）
 │       ├── trips.json
-│       └── busan-2026/*.json
+│       ├── <slug>/{itinerary,flights,hotels,transport,guide}.json
+│       └── phrases/<lang>.json
 │
 ├── scripts/
-│   └── sync-notion.ts                # Notion → public/data 同步
+│   └── sync-notion.ts                # Notion → public/data 同步（本機手動）
 │
 ├── examples/                         # 內容 JSON 範本 + schema 說明（README.md）
 │
 ├── .github/workflows/
-│   ├── deploy.yml                    # build + 部署 GitHub Pages
-│   └── sync-notion.yml              # 每小時從 Notion 同步、commit
+│   └── deploy.yml                    # build + 部署 GitHub Pages（唯一 workflow）
 │
 └── doc/                              # 專案內部文件（不進版控）
     ├── Issue.md                      # 問題與決策紀錄（append-only 項次制）
@@ -160,8 +168,15 @@ npm run sync:notion       # 產出 public/data/trips.json + <slug>/itinerary.jso
 | 資料 | 來源 |
 |------|------|
 | 行程專案、每日行程、機票、住宿、交通票券、旅遊攻略、語言句庫 | **Notion**（`doc/Notion.md`） |
-| 帳號、個人資料、記帳、分帳、平安回報、緊急求助、相簿、打包勾選、公告已讀 | **Supabase**（`doc/Database.md`） |
+| 帳號、個人資料、**行程權限**、記帳、分帳、平安回報、緊急求助、相簿、打包勾選、公告已讀 | **Supabase**（`doc/Database.md`） |
 | 匯率 | 免費 API，同步時抓一次存 JSON（規劃中） |
+
+### 帳號與權限（詳見 `doc/Database.md`）
+- 登入用**使用者代號**（非 Email）：代號補上 `@traveldemo.app` 當 `auth.users.email`。
+- 建帳號:Supabase → SQL Editor → `select public.create_app_user('代號', '密碼');`
+- 權限:`profiles.is_admin = true` → 看所有行程；否則只看 `trip_members` 有列的行程。
+- 前端 `fetchMyAccess()` 讀這兩項;`TripPicker` / `TripLayout` 等權限回來才渲染,未授權網址導回選擇行程。
+- **限制**:內容 JSON 是公開靜態檔,此為 UI 層控管。
 
 ---
 
@@ -213,7 +228,7 @@ npm run sync:notion       # 產出 public/data/trips.json + <slug>/itinerary.jso
 
 ### 環境需求
 - **Node.js 20 以上**（開發機實測 v24.19.0，位於 `C:\Program Files\nodejs`）。
-- 瀏覽器內容瀏覽不需要任何金鑰；記帳 / 平安回報等功能需要 Supabase anon key。
+- 未設 `VITE_SUPABASE_ANON_KEY` → 帳號功能整個停用（不需登入，內容照常瀏覽）；設了才會啟用登入 gate 與權限過濾。
 
 ### 環境變數（`.env`，不進版控）
 
@@ -226,10 +241,11 @@ npm run sync:notion       # 產出 public/data/trips.json + <slug>/itinerary.jso
 | `NOTION_TRIPS_DB_ID` / `NOTION_ITINERARY_DB_ID` | 對應 Notion database ID |
 
 ### 部署（GitHub Pages）
-1. Repo Settings → Pages → Source 選 **GitHub Actions**。
-2. Repo Settings → Secrets 加 `VITE_SUPABASE_URL`、`VITE_SUPABASE_ANON_KEY`；同步用再加 `NOTION_TOKEN`、`NOTION_TRIPS_DB_ID`、`NOTION_ITINERARY_DB_ID`。
-3. push 到 `main` → `deploy.yml` 自動 build，站台在 `https://<user>.github.io/<repo>/`。
-4. `deploy.yml` 會把 `VITE_BASE` 設為 `/<repo>/`。
+1. repo 需為 **Public**（免費帳號的 Pages 限制）。
+2. Repo Settings → Pages → Source 選 **GitHub Actions**。
+3. Repo Settings → Secrets 加 `VITE_SUPABASE_URL`、`VITE_SUPABASE_ANON_KEY`（登入功能要用）。
+4. push 到 `main` → `deploy.yml` 自動 build，站台在 `https://<user>.github.io/<repo>/`（`VITE_BASE` = `/<repo>/`）。
+- 內容同步不在 Actions：本機 `npm run sync:notion` → commit `public/data/` → push（見項次 005）。
 
 ### Git 分支策略
 - `main`：發佈分支，`deploy.yml` 於此觸發部署。
@@ -264,4 +280,5 @@ npm run sync:notion       # 產出 public/data/trips.json + <slug>/itinerary.jso
 - `vite.config.ts` 的 `runtimeCaching` 對 `/data/` 用 NetworkFirst、對 `/images/` 用 CacheFirst，出國斷網仍可看已快取內容。
 - Notion「時區JSON」欄位是 `label|tz;label|tz` 純文字（Notion API 不接受含大量引號的 JSON 字串），由 `sync-notion.ts` 解析。
 - Notion 圖片連結約 1 小時過期，若要用圖片需自建 proxy / 轉存。
-- 內容更新頻率 = `sync-notion.yml` 的 cron（每小時），非即時。
+- 內容更新 = 本機跑 `npm run sync:notion` → commit → push（非自動、非即時）。
+- `src/lib/auth.tsx` 同時 export 元件與 hook，dev 下 Fast Refresh 會整頁重載（production 不受影響）。

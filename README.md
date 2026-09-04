@@ -9,10 +9,11 @@
 - 多專案切換（第一頁選行程：沖繩 / 泰國 / 釜山…），進入後看該行程內容
 - 每日行程瀏覽（逐時段、分類標記、Google 地圖連結、票券徽章）
 - 機票 / 住宿 / 交通票券（如釜山 PASS）/ 乘車紀錄
-- 旅遊攻略（簽證 / 入境 / 電壓 / 退稅 / 緊急聯絡）與語言小卡句庫
-- 使用者功能（規劃中）：登入、記帳、分帳、平安回報、相簿上傳
+- 旅遊攻略（簽證 / 入境 / 電壓 / 退稅 / 緊急聯絡）與語言小卡句庫（依語言共用）
+- 帳號登入（使用者代號 + 密碼，Supabase Auth）；由管理者設定誰能看哪些行程
+- 使用者功能（規劃中）：記帳、分帳、平安回報、相簿上傳
 - 離線可用（PWA，加入主畫面），出國斷網仍可看已快取內容
-- 內容以 Notion 為後台，由 GitHub Actions 同步成靜態 JSON
+- 內容以 Notion 為後台，本機 `npm run sync:notion` 產生靜態 JSON 後 commit
 
 ---
 
@@ -32,21 +33,22 @@
 
 ```mermaid
 flowchart TB
-    subgraph Content["內容（唯讀，管理者編輯）"]
+    subgraph Content["內容（唯讀,管理者編輯）"]
         Notion["Notion 行程專案 / 每日行程 ..."]
-        Sync["sync-notion.ts（Actions 每小時）"]
+        Sync["sync-notion.ts（本機手動）"]
         JSON["public/data JSON"]
         Notion --> Sync --> JSON
     end
 
     subgraph Front["前端 React（GitHub Pages 靜態站）"]
-        Pick["選行程頁"]
-        Trip["行程內頁 首頁·行程·機票·住宿·交通·攻略·語言"]
-        Pick --> Trip
+        Login["登入頁 使用者代號 + 密碼"]
+        Pick["選行程頁 依權限過濾"]
+        Trip["行程內頁 首頁·行程·機票·住宿·交通·攻略·語言·我的"]
+        Login --> Pick --> Trip
     end
 
-    subgraph User["使用者資料（App 內寫入）"]
-        Supabase["Supabase expenses / splits / safety_reports / photos ... 全表 RLS"]
+    subgraph User["使用者資料 + 權限"]
+        Supabase["Supabase profiles(is_admin) / trip_members / expenses ... 全表 RLS"]
     end
 
     JSON -- "靜態檔 fetch" --> Front
@@ -61,15 +63,17 @@ flowchart TB
 
 | 路由 | 元件 | 說明 |
 |------|------|------|
-| `/` | `TripPicker` | 讀 `trips.json`，選行程後存 `localStorage`，導向該行程首頁 |
-| `/t/:slug` | `TripLayout` | 底部分頁殼、右上「切換行程」 |
+| `/login` | `Login` | 使用者代號 + 密碼（已啟用帳號功能時,未登入一律導到這） |
+| `/` `/pick` | `TripPicker` | 依權限顯示行程,分「旅程中 / 即將開始 / 已結束」三段;選行程後存 `localStorage` |
+| `/t/:slug` | `TripLayout` | 底部分頁殼、右上「切換行程」;未授權的 slug 導回 `/pick` |
 | `/t/:slug/home` | `Home` | 當地 / 台北雙時鐘、今日行程、工具卡 |
 | `/t/:slug/itinerary` | `Itinerary` | 每日行程，類型圖示 + Google 地圖連結 + 票券徽章 |
 | `/t/:slug/flights` | `Flights` | 去 / 回程航班 |
 | `/t/:slug/hotels` | `Hotels` | 住宿（入住 / 退房 / 地圖） |
 | `/t/:slug/transport` | `Transport` | 票券、乘車紀錄、連結 |
 | `/t/:slug/guide` | `Guide` | 旅遊攻略分節 |
-| `/t/:slug/phrases` | `Phrases` | 語言小卡句庫 |
+| `/t/:slug/phrases` | `Phrases` | 語言小卡句庫（依 `trip.lang` 共用） |
+| `/t/:slug/mine` | `Mine` | 「我的」:代號卡 + 功能列 + 登出 |
 
 ### 內容讀取流程
 
@@ -128,11 +132,27 @@ sequenceDiagram
 | 攻略 | `guide.json` | `sections[]` 分節條列 |
 | 語言 | `phrases/<lang>.json` | 依 `trip.lang` 共用；`categories[].phrases[]`：中文 / 目標語 / 拼音 |
 
-### 4. 使用者功能（Supabase，規劃中）
+### 4. 帳號登入與行程權限
+
+```mermaid
+flowchart TD
+    L["登入頁 使用者代號 + 密碼"] --> A["signInWithPassword（代號 + @traveldemo.app）"]
+    A --> S["session 存 localStorage 同裝置免重登"]
+    S --> M["fetchMyAccess 讀 profiles.is_admin + trip_members"]
+    M -- "is_admin" --> ALL["看所有行程"]
+    M -- "非 admin" --> SOME["只看 trip_members 有列的行程"]
+```
+
+- 登入用**使用者代號**,不用 Email(`src/lib/config.ts` 做代號 ↔ email 轉換)。
+- 建帳號:Supabase → SQL Editor → `select public.create_app_user('代號','密碼');`
+- 權限:`profiles.is_admin` 看全部 / `trip_members` 逐列指定。`TripPicker` 與 `TripLayout` **等權限回來才渲染**,未授權網址導回 `/pick`。
+- **限制**:內容 JSON 是公開靜態檔,此為 UI 層控管。詳見 `doc/Database.md`。
+
+### 5. 使用者資料功能（Supabase,規劃中）
 
 ```mermaid
 flowchart LR
-    A["使用者登入 Supabase Auth"] --> B["記帳 expenses"]
+    A["登入使用者"] --> B["記帳 expenses"]
     A --> C["分帳 expense_splits"]
     A --> D["平安回報 safety_reports"]
     A --> E["緊急求助 sos_events"]
@@ -142,10 +162,10 @@ flowchart LR
     D --> G
     E --> G
     F --> G
-    G -.- N["trip_slug 隔開行程；RLS 僅自己的資料"]
+    G -.- N["trip_slug 隔開行程;RLS 僅自己的資料"]
 ```
 
-詳見 `doc/Database.md`。
+表已就緒,前端待做。詳見 `doc/Database.md`。
 
 ---
 
@@ -157,8 +177,8 @@ flowchart TD
         T["行程專案 / 每日行程 / 航班 / 住宿 / 交通票券 / 旅遊攻略 / 語言句庫"]
     end
 
-    subgraph CI["GitHub Actions（sync-notion.yml，每小時 / 手動）"]
-        S["sync-notion.ts（notionhq client）"]
+    subgraph Local["本機手動"]
+        S["npm run sync-notion（notionhq client）"]
     end
 
     T --> S
@@ -168,6 +188,8 @@ flowchart TD
     O2 --> C
     C --> D["deploy.yml → GitHub Pages"]
 ```
+
+> Actions 版的 `sync-notion.yml` 已移除,改由本機手動同步(見 `doc/Issue.md` 項次 005)。
 
 - 前端**不直接呼叫 Notion API**（CORS + token 為機密），一律經 JSON。
 - 「時區JSON」欄位為 `label|tz;label|tz` 純文字，由同步腳本解析。
@@ -179,10 +201,11 @@ flowchart TD
 ## 資料庫（Supabase）
 
 - 專案 region：`ap-northeast-2`（首爾）。
-- 表：`profiles`、`trip_members`、`expenses`、`expense_splits`、`safety_reports`、`sos_events`、`photos`、`packing_checks`、`message_receipts`。
+- 表：`profiles`(含 `is_admin`)、`trip_members`、`expenses`、`expense_splits`、`safety_reports`、`sos_events`、`photos`、`packing_checks`、`message_receipts`。
 - 全表啟用 RLS，政策一律「只能存取自己的資料」（`user_id = auth.uid()`；`profiles` 用 `id`；`expense_splits` 用 `owner_user_id`）。
 - 以 `trip_slug` 欄位隔開不同行程的個人資料。
-- 完整欄位與 migration 紀錄見 `doc/Database.md`。
+- 帳號:`auth.users`(用代號 + `@traveldemo.app`);建帳號用 `public.create_app_user()`。
+- 完整欄位、帳號 / 權限說明與 migration 紀錄見 `doc/Database.md`。
 
 ---
 
@@ -203,8 +226,8 @@ flowchart TD
 2. （可選）Repo Settings → Secrets 加 `VITE_SUPABASE_URL`、`VITE_SUPABASE_ANON_KEY`。
 3. push 到 `main` 即自動 build 部署。
 
-> 內容同步目前是**本機手動**：`npm run sync:notion` 更新 `public/data/` → commit → push。
-> 之後要改成 Actions 自動同步，見 `doc/Issue.md` 項次 004。
+> repo 需為 **Public**（免費帳號的 Pages 限制）。
+> 內容同步是**本機手動**：`npm run sync:notion` 更新 `public/data/` → commit → push（見 `doc/Issue.md` 項次 005）。
 
 ---
 
@@ -219,7 +242,7 @@ flowchart TD
 
 ```bash
 npm install
-cp .env.example .env      # 填 Supabase anon key（僅內容瀏覽可留空）
+cp .env.example .env      # 填 Supabase anon key（不填則帳號功能停用,內容照常）
 npm run dev               # http://localhost:5173
 ```
 
@@ -242,16 +265,16 @@ Travel APP/
 ├── package.json                 # dev / build / preview / sync:notion
 ├── .env.example
 ├── src/
-│   ├── main.tsx                 # HashRouter + QueryClientProvider
+│   ├── main.tsx                 # HashRouter + AuthProvider + RequireAuth 守衛
 │   ├── types.ts
-│   ├── lib/                     # content.ts / supabase.ts / trip.ts
-│   └── pages/                   # TripPicker / TripLayout / Home / Itinerary / ...
+│   ├── lib/                     # content.ts / supabase.ts / auth.tsx / members.ts / config.ts / trip.ts
+│   └── pages/                   # Login / TripPicker / TripLayout / Home / ... / Mine
 ├── public/
 │   ├── favicon.svg
-│   └── data/                    # trips.json + <slug>/*.json
+│   └── data/                    # trips.json + <slug>/*.json + phrases/<lang>.json
 ├── scripts/sync-notion.ts
 ├── examples/                    # 內容 JSON 範本 + schema 說明
-├── .github/workflows/          # deploy.yml / sync-notion.yml
+├── .github/workflows/deploy.yml # 唯一 workflow
 └── doc/                        # Issue.md / Database.md / Notion.md / secrets.local.md（不進版控）
 ```
 
@@ -259,11 +282,13 @@ Travel APP/
 
 | 檔案 | 說明 |
 |------|------|
-| `src/main.tsx` | 路由與 Provider 組裝 |
+| `src/main.tsx` | 路由 + Provider + `RequireAuth`（未登入導 `/login`） |
+| `src/lib/auth.tsx` | `AuthProvider` / `useAuth`(session、登入、登出) |
+| `src/lib/members.ts` | `fetchMyAccess()`：`is_admin` + `trip_members` |
+| `src/lib/config.ts` | 使用者代號 ↔ Auth email 轉換 |
 | `src/lib/content.ts` | 內容 JSON 讀取（所有頁面共用） |
-| `src/lib/supabase.ts` | Supabase client（無金鑰時優雅停用） |
-| `scripts/sync-notion.ts` | Notion → `public/data` 同步（目前**本機手動**跑，不在 Actions） |
-| `vite.config.ts` | PWA 與離線快取策略 |
+| `src/lib/supabase.ts` | Supabase client（無金鑰時優雅停用；`persistSession`） |
+| `scripts/sync-notion.ts` | Notion → `public/data` 同步（**本機手動**跑） |
 | `.github/workflows/deploy.yml` | GitHub Pages 部署（唯一的 workflow） |
 
 ---
@@ -274,8 +299,8 @@ Travel APP/
 |------|------|
 | 專案 | Travel APP（旅遊網頁 / APP） |
 | 建立日期 | 2026-09-04 |
-| 最後更新 | 2026-09-04 |
-| 文件版本 | v1.0 |
+| 最後更新 | 2026-09-04（加入帳號登入與行程權限,見 `doc/Issue.md` 項次 006） |
+| 文件版本 | v1.1 |
 
 相關文件：
 - `doc/Issue.md` — 問題與決策紀錄（append-only 項次制）
