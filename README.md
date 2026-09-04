@@ -31,26 +31,26 @@
 ### 系統架構
 
 ```mermaid
-graph TB
+flowchart TB
     subgraph Content["內容（唯讀，管理者編輯）"]
-        Notion["Notion<br/>行程專案 / 每日行程"]
-        Sync["scripts/sync-notion.ts<br/>(GitHub Actions 每小時)"]
-        JSON["public/data/*.json"]
+        Notion["Notion 行程專案 / 每日行程 ..."]
+        Sync["sync-notion.ts（Actions 每小時）"]
+        JSON["public/data JSON"]
         Notion --> Sync --> JSON
     end
 
     subgraph Front["前端 React（GitHub Pages 靜態站）"]
-        Pick["/ 選行程"]
-        Trip["/t/:slug/*<br/>首頁·行程·機票·住宿·交通·攻略·語言"]
+        Pick["選行程頁"]
+        Trip["行程內頁 首頁·行程·機票·住宿·交通·攻略·語言"]
         Pick --> Trip
     end
 
     subgraph User["使用者資料（App 內寫入）"]
-        Supabase["Supabase<br/>expenses / splits / safety_reports / photos ...<br/>全表 RLS"]
+        Supabase["Supabase expenses / splits / safety_reports / photos ... 全表 RLS"]
     end
 
-    JSON -->|fetch 同網域靜態檔| Front
-    Front -->|@supabase/supabase-js 直連| Supabase
+    JSON -- "靜態檔 fetch" --> Front
+    Front -- "supabase-js 直連" --> Supabase
 ```
 
 ---
@@ -75,14 +75,14 @@ graph TB
 
 ```mermaid
 flowchart TD
-    A[元件 useQuery] --> B["src/lib/content.ts fetchXxx(slug)"]
-    B --> C["fetch ${BASE}data/&lt;slug&gt;/xxx.json"]
-    C --> D{Service Worker}
-    D -->|有網路| E[NetworkFirst：取網路，更新快取]
-    D -->|斷網| F[回快取（最長 30 天）]
-    E --> G[TanStack Query 快取 60s]
+    A["元件 useQuery"] --> B["lib/content.ts fetchXxx"]
+    B --> C["fetch data 下的 slug JSON"]
+    C --> D{"Service Worker"}
+    D -- "有網路" --> E["NetworkFirst：取網路，更新快取"]
+    D -- "斷網" --> F["回快取（最長 30 天）"]
+    E --> G["TanStack Query 快取 60s"]
     F --> G
-    G --> H[渲染]
+    G --> H["渲染"]
 ```
 
 ---
@@ -103,8 +103,8 @@ sequenceDiagram
     TP->>U: 顯示行程卡片（沖繩 / 泰國 / 釜山…）
     U->>TP: 點選行程
     TP->>LS: 寫入 selected-trip = slug
-    TP->>TL: 導向 /t/:slug/home
-    Note over TL: 之後開 App 有 slug 就直接進該行程<br/>右上「切換行程」回到 /
+    TP->>TL: 導向該行程首頁
+    Note over TL: 之後開 App 有 slug 就直接進該行程；右上「切換行程」回選單
 ```
 
 - 每個行程一個 `slug`（如 `busan-2026`），對應 `public/data/<slug>/` 與 Supabase 的 `trip_slug`。
@@ -125,19 +125,24 @@ sequenceDiagram
 | 機票 | `flights.json` | 去 / 回程，`departLocal` / `arriveLocal` 用當地時間字串 |
 | 住宿 | `hotels.json` | 入住 / 退房 / 晚數 / 地圖連結 |
 | 交通 | `transport.json` | `passes`（票券）、`rides`（乘車）、`links` |
-| 攻略 | `guide.json` | `sections[]` 分節條列 + `reminder` |
-| 語言 | `phrases.json` | `categories[].phrases[]`：中文 / 目標語 / 羅馬拼音 |
+| 攻略 | `guide.json` | `sections[]` 分節條列 |
+| 語言 | `phrases/<lang>.json` | 依 `trip.lang` 共用；`categories[].phrases[]`：中文 / 目標語 / 拼音 |
 
 ### 4. 使用者功能（Supabase，規劃中）
 
 ```mermaid
 flowchart LR
-    A[使用者登入<br/>Supabase Auth] --> B[記帳 expenses]
-    A --> C[分帳 expense_splits]
-    A --> D[平安回報 safety_reports]
-    A --> E[緊急求助 sos_events]
-    A --> F[相簿 photos + Storage]
-    B & C & D & E & F -->|trip_slug 隔開行程<br/>RLS：僅自己的資料| G[(PostgreSQL)]
+    A["使用者登入 Supabase Auth"] --> B["記帳 expenses"]
+    A --> C["分帳 expense_splits"]
+    A --> D["平安回報 safety_reports"]
+    A --> E["緊急求助 sos_events"]
+    A --> F["相簿 photos + Storage"]
+    B --> G[("PostgreSQL")]
+    C --> G
+    D --> G
+    E --> G
+    F --> G
+    G -.- N["trip_slug 隔開行程；RLS 僅自己的資料"]
 ```
 
 詳見 `doc/Database.md`。
@@ -149,26 +154,25 @@ flowchart LR
 ```mermaid
 flowchart TD
     subgraph Notion["Notion「Travel APP 內容」"]
-        T[行程專案 DB]
-        I[每日行程 DB]
+        T["行程專案 / 每日行程 / 航班 / 住宿 / 交通票券 / 旅遊攻略 / 語言句庫"]
     end
 
     subgraph CI["GitHub Actions（sync-notion.yml，每小時 / 手動）"]
-        S["scripts/sync-notion.ts<br/>@notionhq/client"]
+        S["sync-notion.ts（notionhq client）"]
     end
 
     T --> S
-    I --> S
-    S --> O1[public/data/trips.json]
-    S --> O2["public/data/&lt;slug&gt;/itinerary.json"]
-    O1 & O2 --> C[git commit + push]
-    C --> D[deploy.yml → GitHub Pages]
+    S --> O1["trips.json + 各行程 JSON"]
+    S --> O2["phrases 下的各語言 JSON"]
+    O1 --> C["git commit + push"]
+    O2 --> C
+    C --> D["deploy.yml → GitHub Pages"]
 ```
 
 - 前端**不直接呼叫 Notion API**（CORS + token 為機密），一律經 JSON。
 - 「時區JSON」欄位為 `label|tz;label|tz` 純文字，由同步腳本解析。
+- 內容（行程 / 航班 / 住宿 / 交通 / 攻略）依 `slug` 綁行程；語言句庫依 `lang`（`ko` / `ja` / `th` / `en`）共用。
 - Notion 屬性 ↔ JSON 欄位對照見 `doc/Notion.md`。
-- 尚未接 Notion：`flights` / `hotels` / `transport` / `guide` / `phrases`（仍為手寫 JSON）。
 
 ---
 
@@ -186,18 +190,19 @@ flowchart TD
 
 ```mermaid
 flowchart TD
-    A[push 到 main] --> B[deploy.yml 觸發]
-    B --> C[npm ci]
-    C --> D["npm run build<br/>VITE_BASE=/&lt;repo&gt;/"]
-    D --> E[upload-pages-artifact]
-    E --> F[deploy-pages]
-    F --> G["https://&lt;user&gt;.github.io/&lt;repo&gt;/"]
+    A["push 到 main"] --> B["deploy.yml 觸發"]
+    B --> C["npm ci"]
+    C --> D["npm run build（VITE_BASE = repo 子路徑）"]
+    D --> E["upload-pages-artifact"]
+    E --> F["deploy-pages"]
+    F --> G["user.github.io 下的 repo 路徑"]
 ```
 
 設定步驟：
 1. Repo Settings → Pages → Source 選 **GitHub Actions**。
-2. Repo Settings → Secrets 加 `VITE_SUPABASE_URL`、`VITE_SUPABASE_ANON_KEY`（同步用再加 `NOTION_TOKEN`、`NOTION_TRIPS_DB_ID`、`NOTION_ITINERARY_DB_ID`）。
-3. push 到 `main` 即自動部署。
+2. Repo Settings → Secrets 加 `VITE_SUPABASE_URL`、`VITE_SUPABASE_ANON_KEY`；內容同步再加 `NOTION_TOKEN` 與 7 個 `NOTION_*_DB_ID`（清單見 `doc/Issue.md` 項次 004）。
+3. Repo Settings → Actions → General → Workflow permissions 設 **Read and write**（`sync-notion.yml` 要 commit 回 repo）。
+4. push 到 `main` 即自動部署。
 
 ---
 
