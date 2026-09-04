@@ -1,0 +1,68 @@
+[
+  {
+    "slug": "busan-2025",
+    "name": "2025 釜山行",
+    "emoji": "🇰🇷",
+    "lang": "ko",
+    "startDate": "2025-02-15",
+    "endDate": "2025-02-18",
+    "cities": [
+      "釜山"
+    ],
+    "timezones": [
+      {
+        "label": "釜山",
+        "tz": "Asia/Seoul"
+      },
+      {
+        "label": "台北",
+        "tz": "Asia/Taipei"
+      }
+    ],
+    "status": "ended"
+  },
+  {
+    "slug": "seoul-2025",
+    "name": "2025 首爾行",
+    "emoji": "🇰🇷",
+    "lang": "ko",
+    "startDate": "2025-04-05",
+    "endDate": "2025-04-10",
+    "cities": [
+      "首爾"
+    ],
+    "timezones": [
+      {
+        "label": "首爾",
+        "tz": "Asia/Seoul"
+      },
+      {
+        "label": "台北",
+        "tz": "Asia/Taipei"
+      }
+    ],
+    "status": "ended"
+  },
+  {
+    "slug": "busan-2026",
+    "name": "2026 釜山行",
+    "emoji": "🇰🇷",
+    "lang": "ko",
+    "startDate": "2026-06-13",
+    "endDate": "2026-06-16",
+    "cities": [
+      "釜山"
+    ],
+    "timezones": [
+      {
+        "label": "釜山",
+        "tz": "Asia/Seoul"
+      },
+      {
+        "label": "台北",
+        "tz": "Asia/Taipei"
+      }
+    ],
+    "status": "ended"
+  }
+]

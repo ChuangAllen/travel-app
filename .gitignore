@@ -1,0 +1,42 @@
+# 專案內部文件(不進版控)
+doc/
+
+# 參考素材(不進版控)
+Sample/
+
+# 環境變數 / 機密
+.env
+.env.*
+!.env.example
+
+# 相依套件
+node_modules/
+
+# 建置輸出
+dist/
+build/
+.output/
+*.tsbuildinfo
+
+# 快取
+.cache/
+.vite/
+.eslintcache
+
+# 同步產出(由 GitHub Actions 從 Notion 產生)
+# 第 1 階段先用手寫 JSON,需要進版控 → 暫時保留註解;
+# 接上 Notion 自動同步後再打開這行。
+# public/data/
+
+# 日誌
+*.log
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+
+# 作業系統 / 編輯器
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/*
+!.vscode/extensions.json

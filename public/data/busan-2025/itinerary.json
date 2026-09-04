@@ -1,0 +1,213 @@
+{
+  "tripSlug": "busan-2025",
+  "days": [
+    {
+      "day": 1,
+      "date": "2025-02-15",
+      "weekday": "六",
+      "title": "出發桃園機場",
+      "items": [
+        {
+          "time": "14:50",
+          "type": "transport",
+          "title": "桃園國際機場",
+          "note": "班機 IT606"
+        },
+        {
+          "time": "16:50",
+          "type": "transport",
+          "title": "起飛"
+        },
+        {
+          "time": "20:05",
+          "type": "transport",
+          "title": "抵達 釜山金海機場"
+        },
+        {
+          "time": "20:50",
+          "type": "transport",
+          "title": "出關 → 地鐵",
+          "note": "廣安站步行 15 分鐘"
+        },
+        {
+          "time": "21:00",
+          "type": "food",
+          "title": "好吃炸雞 Jin貞辣炸雞"
+        },
+        {
+          "time": "23:30",
+          "type": "hotel",
+          "title": "住宿 廣安里海邊 Airbnb"
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "date": "2025-02-16",
+      "weekday": "日",
+      "title": "白淺灘文化村",
+      "items": [
+        {
+          "time": "10:00",
+          "type": "transport",
+          "title": "出發"
+        },
+        {
+          "time": "11:00",
+          "type": "sightseeing",
+          "title": "白淺灘文化村"
+        },
+        {
+          "time": "13:00",
+          "type": "sightseeing",
+          "title": "南浦洞",
+          "note": "BIFF 廣場"
+        },
+        {
+          "time": "13:30",
+          "type": "food",
+          "title": "味贊王鹽烤肉",
+          "note": "未去 李在模 PIZZA"
+        },
+        {
+          "time": "17:00",
+          "type": "food",
+          "title": "咖啡廳 Coffee Bubu"
+        },
+        {
+          "time": "19:30",
+          "type": "transport",
+          "title": "搭車"
+        },
+        {
+          "time": "20:40",
+          "type": "activity",
+          "title": "報到 No.4 Suyeongman Bay Center"
+        },
+        {
+          "time": "21:00",
+          "type": "activity",
+          "title": "遊艇",
+          "pass": "VISIT BUSAN PASS"
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "date": "2025-02-17",
+      "weekday": "一",
+      "title": "膠囊列車",
+      "items": [
+        {
+          "time": "08:00",
+          "type": "transport",
+          "title": "出發"
+        },
+        {
+          "time": "09:00",
+          "type": "activity",
+          "title": "抵達排隊 尾浦 Mipo"
+        },
+        {
+          "time": "09:30",
+          "type": "activity",
+          "title": "膠囊列車 - 尾浦"
+        },
+        {
+          "time": "11:00",
+          "type": "activity",
+          "title": "海岸列車 - 青沙浦"
+        },
+        {
+          "time": "11:30",
+          "type": "food",
+          "title": "咖啡廳 Rendez-vous Haeundae"
+        },
+        {
+          "time": "13:00",
+          "type": "food",
+          "title": "自然島鹽麵包",
+          "note": "BUSAN X the SKY"
+        },
+        {
+          "time": "13:30",
+          "type": "food",
+          "title": "味贊王鹽烤肉 海雲台店"
+        },
+        {
+          "time": "14:00",
+          "type": "sightseeing",
+          "title": "海雲台散步"
+        },
+        {
+          "time": "15:30",
+          "type": "shopping",
+          "title": "新世界百貨",
+          "note": "汗蒸幕 SPA LAND Centum City"
+        },
+        {
+          "time": "21:00",
+          "type": "food",
+          "title": "晚餐"
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "date": "2025-02-18",
+      "weekday": "二",
+      "title": "西面",
+      "items": [
+        {
+          "time": "10:00",
+          "type": "sightseeing",
+          "title": "廣安里",
+          "note": "人生拍貼機 Analogue"
+        },
+        {
+          "time": "12:00",
+          "type": "sightseeing",
+          "title": "西面",
+          "note": "樂天百貨 B1 放行李 3 小時免費"
+        },
+        {
+          "time": "12:30",
+          "type": "food",
+          "title": "機張手工切麵"
+        },
+        {
+          "time": "13:00",
+          "type": "shopping",
+          "title": "逛街",
+          "note": "韓版 UQ、musinsa standard／明信片 Poset Jeonpo"
+        },
+        {
+          "time": "15:00",
+          "type": "food",
+          "title": "咖啡廳 moody bread market"
+        },
+        {
+          "time": "17:00",
+          "type": "transport",
+          "title": "準備搭車去機場"
+        },
+        {
+          "time": "18:00",
+          "type": "transport",
+          "title": "釜山金海機場 check-in",
+          "note": "班機 IT607"
+        },
+        {
+          "time": "20:50",
+          "type": "transport",
+          "title": "起飛"
+        },
+        {
+          "time": "22:30",
+          "type": "transport",
+          "title": "抵達 桃園國際機場"
+        }
+      ]
+    }
+  ]
+}

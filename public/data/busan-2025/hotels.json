@@ -1,0 +1,14 @@
+{
+  "tripSlug": "busan-2025",
+  "stays": [
+    {
+      "name": "廣安里海邊 Airbnb",
+      "area": "廣安里（광안리）",
+      "checkIn": "2025-02-15",
+      "checkOut": "2025-02-18",
+      "nights": 3,
+      "mapUrl": "https://www.google.com/maps/search/?api=1&query=%EA%B4%91%EC%95%88%EB%A6%AC",
+      "note": "廣安站步行 15 分鐘"
+    }
+  ]
+}

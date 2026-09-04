@@ -1,0 +1,36 @@
+{
+  "tripSlug": "seoul-2025",
+  "segments": [
+    {
+      "kind": "outbound",
+      "flightNo": "BR170",
+      "airline": "EVA Air",
+      "from": {
+        "code": "TPE",
+        "name": "桃園國際機場 T2"
+      },
+      "to": {
+        "code": "ICN",
+        "name": "首爾仁川機場 T1"
+      },
+      "departLocal": "2025-04-05 07:30",
+      "arriveLocal": "2025-04-05 11:00"
+    },
+    {
+      "kind": "return",
+      "flightNo": "BR159",
+      "airline": "EVA Air",
+      "from": {
+        "code": "ICN",
+        "name": "首爾仁川機場 T1"
+      },
+      "to": {
+        "code": "TPE",
+        "name": "桃園國際機場 T2"
+      },
+      "departLocal": "2025-04-10 19:45",
+      "arriveLocal": "2025-04-10 21:25",
+      "note": "部分同行者 4/9 先返（同班次 BR159）"
+    }
+  ]
+}

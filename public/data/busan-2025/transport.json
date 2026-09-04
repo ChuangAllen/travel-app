@@ -1,0 +1,25 @@
+{
+  "tripSlug": "busan-2025",
+  "passes": [
+    {
+      "name": "VISIT BUSAN PASS",
+      "note": "釜山通行證，涵蓋多個景點免費入場",
+      "usedFor": [
+        "遊艇",
+        "膠囊列車",
+        "海岸列車",
+        "SPA LAND 等"
+      ]
+    }
+  ],
+  "rides": [
+    {
+      "date": "2025-02-15",
+      "mode": "地鐵",
+      "from": "釜山金海機場",
+      "to": "廣安站",
+      "note": "廣安站步行 15 分鐘到住處"
+    }
+  ],
+  "links": []
+}

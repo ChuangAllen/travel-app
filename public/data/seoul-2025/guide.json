@@ -1,0 +1,48 @@
+{
+  "tripSlug": "seoul-2025",
+  "sections": [
+    {
+      "key": "visa",
+      "label": "簽證",
+      "items": [
+        "台灣護照免簽 90 天",
+        "K-ETA 免辦（出發前再確認當年度適用）"
+      ]
+    },
+    {
+      "key": "entry",
+      "label": "入境規定",
+      "items": [
+        "抵韓前 3 天內填免費 e-Arrival Card"
+      ]
+    },
+    {
+      "key": "voltage",
+      "label": "國家電壓",
+      "items": [
+        "220V 圓形兩孔，先確認電器支援電壓"
+      ]
+    },
+    {
+      "key": "tax-refund",
+      "label": "退稅制度",
+      "items": [
+        "單筆滿 15,000 韓元可退稅，留好護照與單據"
+      ]
+    },
+    {
+      "key": "emergency",
+      "label": "緊急聯絡",
+      "items": [
+        "警察 112、救護 119、旅遊翻譯 1330"
+      ]
+    },
+    {
+      "key": "taboo",
+      "label": "法律禁忌",
+      "items": [
+        "禁帶毒品槍械，拍人先徵得同意"
+      ]
+    }
+  ]
+}

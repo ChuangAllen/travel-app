@@ -1,0 +1,28 @@
+{
+  "tripSlug": "busan-2026",
+  "passes": [
+    {
+      "name": "釜山 PASS（BUSAN PASS）",
+      "note": "涵蓋 BUSAN X the SKY、海岸列車、松島纜車、ARTE MUSEUM、遊艇等景點",
+      "usedFor": [
+        "BUSAN X the SKY",
+        "海岸列車",
+        "膠囊列車",
+        "遊艇",
+        "松島纜車",
+        "ARTE MUSEUM Busan"
+      ]
+    }
+  ],
+  "rides": [
+    {
+      "date": "2026-06-13",
+      "mode": "計程車",
+      "from": "釜山金海機場",
+      "to": "廣安里",
+      "fare": "500 元 / 輛（兩人）",
+      "note": "注意跳表輸入價格、記得拿收據"
+    }
+  ],
+  "links": []
+}
