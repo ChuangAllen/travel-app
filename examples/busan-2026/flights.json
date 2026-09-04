@@ -6,15 +6,15 @@
       "flightNo": "IT606",
       "airline": "Tigerair Taiwan",
       "from": {
-        "code": "KHH",
-        "name": "高雄小港國際機場"
+        "code": "TPE",
+        "name": "桃園國際機場"
       },
       "to": {
         "code": "PUS",
         "name": "釜山金海國際機場"
       },
-      "departLocal": "2026-06-13 15:00",
-      "arriveLocal": "2026-06-13 18:25"
+      "departLocal": "2026-06-13 16:40",
+      "arriveLocal": "2026-06-13 19:55"
     },
     {
       "kind": "return",
@@ -25,11 +25,11 @@
         "name": "釜山金海國際機場"
       },
       "to": {
-        "code": "KHH",
-        "name": "高雄小港國際機場"
+        "code": "TPE",
+        "name": "桃園國際機場"
       },
-      "departLocal": "2026-06-16 12:00",
-      "arriveLocal": "2026-06-16 14:00"
+      "departLocal": "2026-06-16 21:05",
+      "arriveLocal": "2026-06-16 22:25"
     }
   ]
 }
