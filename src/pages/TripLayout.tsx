@@ -33,7 +33,7 @@ export default function TripLayout() {
   const accessQuery = useQuery({
     queryKey: ["my-access", user?.id],
     queryFn: fetchMyAccess,
-    enabled: authEnabled
+    enabled: authEnabled && !!user
   });
   const access = accessQuery.data;
   const isAllowed =
@@ -44,8 +44,8 @@ export default function TripLayout() {
     if (slug && isAllowed) setSelectedTrip(slug);
   }, [slug, isAllowed]);
 
-  // 已啟用帳號:等權限回來再決定
-  if (authEnabled && !accessQuery.isSuccess) {
+  // 已啟用帳號:等 session + 權限都就緒再決定
+  if (authEnabled && (!user || !accessQuery.isSuccess)) {
     return <div className="empty">載入中…</div>;
   }
   // 沒有這個行程的權限 → 踢回選擇行程

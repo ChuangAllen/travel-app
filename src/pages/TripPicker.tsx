@@ -33,11 +33,11 @@ export default function TripPicker() {
   const accessQuery = useQuery({
     queryKey: ["my-access", user?.id],
     queryFn: fetchMyAccess,
-    enabled: authEnabled
+    enabled: authEnabled && !!user
   });
 
-  // 有帳號功能時,一定要等權限回來才顯示,避免先閃過全部行程
-  const authResolved = !authEnabled || accessQuery.isSuccess;
+  // 有帳號功能時,一定要等 session 就緒 + 權限回來才顯示,避免閃過全部或誤判「無權限」
+  const authResolved = !authEnabled || (!!user && accessQuery.isSuccess);
   const loading = tripsQuery.isLoading || !authResolved;
 
   const access = accessQuery.data; // TripAccess | null | undefined
