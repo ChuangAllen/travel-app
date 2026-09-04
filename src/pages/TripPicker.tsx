@@ -116,6 +116,9 @@ export default function TripPicker() {
                     <div className="cover">{t.emoji ?? "🧳"}</div>
                     <div className="body">
                       <div className="name">{t.name}</div>
+                      {t.subtitle && (
+                        <div className="subtitle">{t.subtitle}</div>
+                      )}
                       <div className="meta">
                         {t.startDate} – {t.endDate} · {t.cities.join("、")}
                       </div>

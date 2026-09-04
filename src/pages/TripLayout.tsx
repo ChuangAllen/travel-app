@@ -58,6 +58,7 @@ export default function TripLayout() {
       <div className="topbar">
         <div>
           <h1>{trip?.name ?? slug}</h1>
+          {trip?.subtitle && <div className="sub-title">{trip.subtitle}</div>}
           <div className="sub">
             {trip
               ? `${trip.startDate} – ${trip.endDate} · ${trip.cities.join("、")}`

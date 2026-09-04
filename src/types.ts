@@ -4,6 +4,7 @@ export type Lang = "ko" | "ja" | "th" | "en";
 export interface Trip {
   slug: string;
   name: string;
+  subtitle?: string;
   emoji?: string;
   lang: Lang;
   startDate: string;

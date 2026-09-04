@@ -123,6 +123,7 @@ async function syncTrips() {
       return {
         slug: txt(p["slug"]),
         name: txt(p["名稱"]),
+        subtitle: txt(p["副標題"]) || undefined,
         emoji: txt(p["emoji"]) || undefined,
         lang: sel(p["語言"]) || "en",
         startDate: dStart(p["期間"]),

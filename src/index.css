@@ -68,6 +68,12 @@ a {
   margin: 0;
 }
 
+.topbar .sub-title {
+  color: var(--muted);
+  font-size: 13px;
+  margin-top: 1px;
+}
+
 .topbar .sub {
   color: var(--muted);
   font-size: 12px;
@@ -129,6 +135,12 @@ a {
   font-weight: 600;
 }
 
+.trip-card .subtitle {
+  color: var(--muted);
+  font-size: 13px;
+  margin-top: 2px;
+}
+
 .trip-card .meta {
   color: var(--muted);
   font-size: 13px;
@@ -143,6 +155,29 @@ a {
   background: var(--green-soft);
   color: var(--green);
   margin-left: 6px;
+}
+
+.day-picker {
+  display: flex;
+  justify-content: flex-end;
+  margin: 4px 4px 0;
+}
+
+.day-picker select {
+  appearance: none;
+  border: 1px solid var(--green-soft);
+  background: var(--card);
+  color: var(--accent);
+  font-size: 14px;
+  font-weight: 600;
+  padding: 8px 30px 8px 14px;
+  border-radius: 999px;
+  cursor: pointer;
+  background-image: linear-gradient(45deg, transparent 50%, var(--accent) 50%),
+    linear-gradient(135deg, var(--accent) 50%, transparent 50%);
+  background-position: right 14px center, right 9px center;
+  background-size: 5px 5px, 5px 5px;
+  background-repeat: no-repeat;
 }
 
 .day-head {
