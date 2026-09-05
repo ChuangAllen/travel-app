@@ -39,14 +39,21 @@ examples/
 | status | `upcoming` \| `ongoing` \| `ended` | 狀態 |
 
 ### itinerary.json
-- `days[]`:`{ day, date, weekday, title, items[] }`（`title` = 當日主題,如「海雲台」）
+- `days[]`:`{ day, date, weekday, title, items[], images? }`（`title` = 當日主題,如「海雲台」）
 - `items[]`:`{ time, type, title, note?, pass?, mapUrl? }`(`mapUrl` = Google 地圖連結)
 - `type`:`transport` / `food` / `sightseeing` / `activity` / `shopping` / `hotel` / `note`
 - `pass`:使用的票券名稱(可選),前端可標記徽章
+- `images[]`:`{ src, caption?, link? }`(該日插圖,可多張;來源:Notion「每日圖片」資料庫,見 `doc/Notion.md`)
+  - `src`:`images/<slug>/<檔名>` 或外部 URL
+  - `caption`:圖片說明,無則不顯示
+  - `link`:點圖開啟的連結,無則圖片不可點擊
 
 ### flights.json
 - `segments[]`:`{ kind: outbound|return, flightNo, airline, from{code,name}, to{code,name}, departLocal, arriveLocal }`
 - 時間用「當地時間」字串,顯示時再依 `trips.json` 的時區換算
+- **格式慣例**(2026-09-05 統一,見 `doc/Issue.md`):
+  - `from.name` / `to.name` 一律填**機場全名 + 航廈**,例:`桃園國際機場 T1`、`東京成田國際機場 T1`,不要只填縮寫地名(如 `桃園 T1`)。
+  - `departLocal` / `arriveLocal` 一律含**完整日期**,格式 `YYYY-MM-DD HH:mm`,不要只填 `HH:mm`;日期需與該行程 `trips.json` 的 `startDate`/`endDate` 對齊。
 
 ### hotels.json
 - `stays[]`:`{ name, area, checkIn, checkOut, nights, address, mapUrl, note }`

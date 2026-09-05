@@ -37,14 +37,23 @@ export interface ItineraryItem {
   link?: string;
 }
 
+export interface DayImage {
+  /** 相對路徑 images/<slug>/<檔名> 或外部 URL */
+  src: string;
+  /** 圖片說明,無則不顯示 */
+  caption?: string;
+  /** 點圖開啟的連結,無則圖片不可點擊 */
+  link?: string;
+}
+
 export interface ItineraryDay {
   day: number;
   date: string;
   weekday?: string;
   title: string;
   items: ItineraryItem[];
-  /** 該日插圖(可多張):相對路徑 images/<slug>/dayN-i.jpg 或外部 URL */
-  images?: string[];
+  /** 該日插圖(可多張),來源:Notion「每日圖片」資料庫 */
+  images?: DayImage[];
 }
 
 export interface Itinerary {

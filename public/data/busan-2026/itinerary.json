@@ -68,6 +68,17 @@
           "title": "住宿 廣安里 Airbnb",
           "mapUrl": "https://www.google.com/maps/search/?api=1&query=%EA%B4%91%EC%95%88%EB%A6%AC"
         }
+      ],
+      "images": [
+        {
+          "src": "images/busan-2026/IMG_1216.jpeg"
+        },
+        {
+          "src": "images/busan-2026/IMG_1217.jpeg"
+        },
+        {
+          "src": "images/busan-2026/IMG_1218.jpeg"
+        }
       ]
     },
     {
@@ -138,6 +149,11 @@
           "type": "food",
           "title": "晚餐 83Haechi 豬肉烤肉",
           "mapUrl": "https://www.google.com/maps/search/?api=1&query=83%20Haechi%20%EA%B4%91%EC%95%88"
+        }
+      ],
+      "images": [
+        {
+          "src": "images/busan-2026/IMG_1219.png"
         }
       ]
     },
@@ -266,6 +282,11 @@
           "time": "22:25",
           "type": "transport",
           "title": "抵達 🛬 桃園國際機場"
+        }
+      ],
+      "images": [
+        {
+          "src": "images/busan-2026/IMG_1220.jpeg"
         }
       ]
     }

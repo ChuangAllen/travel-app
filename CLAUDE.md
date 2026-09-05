@@ -280,5 +280,10 @@ npm run sync:notion       # 產出 public/data/trips.json + <slug>/itinerary.jso
 - `vite.config.ts` 的 `runtimeCaching` 對 `/data/` 用 NetworkFirst、對 `/images/` 用 CacheFirst，出國斷網仍可看已快取內容。
 - Notion「時區JSON」欄位是 `label|tz;label|tz` 純文字（Notion API 不接受含大量引號的 JSON 字串），由 `sync-notion.ts` 解析。
 - Notion 圖片連結約 1 小時過期，若要用圖片需自建 proxy / 轉存。
+- **航班「出發地名稱」「抵達地名稱」「出發時間」「抵達時間」格式**（2026-09-05 統一，見 `doc/Issue.md`）：
+  - 機場名稱一律填**全名 + 航廈**（例：`桃園國際機場 T1`、`東京成田國際機場 T1`、`首爾仁川機場 T1`），不要只填縮寫地名（如 `桃園 T1`）。
+  - 時間一律填**完整日期 + 時間**（`YYYY-MM-DD HH:mm`，當地時間），不要只填 `HH:mm`；日期需與該行程 `trips.json` 的 `startDate`/`endDate` 及備註對齊。
+  - 四個既有行程（釜山 2025/2026、首爾 2025、東京 2026）已依此格式統一；新增航班資料時比照辦理。
+- **每日插圖改用獨立 Notion 資料庫「每日圖片」**（2026-09-05 起，見 `doc/Issue.md` / `doc/Notion.md`）：一列一張圖，欄位 `標題`(檔名)/`專案slug`/`Day`/`說明`(可選圖說)/`連結`(可選點圖連結)/`排序`。取代舊的「每日行程」表「圖片」文字欄位。`types.ts` 的 `ItineraryDay.images` 型別為 `DayImage[]`（`{ src, caption?, link? }`），不是純字串陣列；新增/修改每日插圖一律在這個新資料庫操作。
 - 內容更新 = 本機跑 `npm run sync:notion` → commit → push（非自動、非即時）。
 - `src/lib/auth.tsx` 同時 export 元件與 hook，dev 下 Fast Refresh 會整頁重載（production 不受影響）。

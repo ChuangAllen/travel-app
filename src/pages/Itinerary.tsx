@@ -75,15 +75,28 @@ function DayBlock({ day }: { day: ItineraryDay }) {
           </div>
         ))}
       </div>
-      {day.images?.map((src, i) => (
-        <img
-          key={i}
-          className="day-photo"
-          src={assetUrl(src)}
-          alt={`Day${day.day} ${day.title} ${i + 1}`}
-          loading="lazy"
-        />
-      ))}
+      {day.images?.map((img, i) => {
+        const photo = (
+          <img
+            className="day-photo"
+            src={assetUrl(img.src)}
+            alt={img.caption || `Day${day.day} ${day.title} ${i + 1}`}
+            loading="lazy"
+          />
+        );
+        return (
+          <div className="day-photo-block" key={i}>
+            {img.link ? (
+              <a href={img.link} target="_blank" rel="noreferrer">
+                {photo}
+              </a>
+            ) : (
+              photo
+            )}
+            {img.caption && <div className="day-photo-caption">{img.caption}</div>}
+          </div>
+        );
+      })}
     </div>
   );
 }

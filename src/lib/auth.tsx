@@ -46,11 +46,15 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       authEnabled: hasSupabase,
       async signIn(codeOrEmail, password) {
         if (!supabase) return { error: "尚未設定 Supabase" };
-        const { error } = await supabase.auth.signInWithPassword({
+        const { data, error } = await supabase.auth.signInWithPassword({
           email: toLoginEmail(codeOrEmail),
           password
         });
-        return error ? { error: error.message } : {};
+        if (error) return { error: error.message };
+        // 直接用回傳的 session 更新狀態，不等 onAuthStateChange 事件，
+        // 避免該事件比 Login 導向 /pick 慢觸發，導致短暫被彈回登入頁。
+        setSession(data.session);
+        return {};
       },
       async signOut() {
         await supabase?.auth.signOut();

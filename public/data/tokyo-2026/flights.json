@@ -7,14 +7,14 @@
       "airline": "酷航 Scoot",
       "from": {
         "code": "TPE",
-        "name": "桃園 T1"
+        "name": "桃園國際機場 T1"
       },
       "to": {
         "code": "NRT",
-        "name": "成田 T1"
+        "name": "東京成田國際機場 T1"
       },
-      "departLocal": "06:45",
-      "arriveLocal": "11:15",
+      "departLocal": "2026-04-28 06:45",
+      "arriveLocal": "2026-04-28 11:15",
       "note": "4/28 第一天"
     },
     {
@@ -23,14 +23,14 @@
       "airline": "酷航 Scoot",
       "from": {
         "code": "NRT",
-        "name": "成田 T1"
+        "name": "東京成田國際機場 T1"
       },
       "to": {
         "code": "TPE",
-        "name": "桃園 T1"
+        "name": "桃園國際機場 T1"
       },
-      "departLocal": "21:15",
-      "arriveLocal": "23:55",
+      "departLocal": "2026-05-02 21:15",
+      "arriveLocal": "2026-05-02 23:55",
       "note": "5/2 第五天"
     }
   ]

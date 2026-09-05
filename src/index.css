@@ -168,7 +168,7 @@ a {
   border: 1px solid var(--green-soft);
   background: var(--card);
   color: var(--accent);
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 600;
   padding: 8px 30px 8px 14px;
   border-radius: 999px;
@@ -262,15 +262,25 @@ a {
   color: var(--muted);
 }
 
+.day-photo-block {
+  margin: 10px 0 0;
+}
+
+.day-photo-block:last-child {
+  margin-bottom: 4px;
+}
+
 .day-photo {
   display: block;
   width: 100%;
   border-radius: 14px;
-  margin: 10px 0 0;
 }
 
-.day-photo:last-child {
-  margin-bottom: 4px;
+.day-photo-caption {
+  font-size: 12px;
+  color: var(--muted);
+  text-align: center;
+  margin-top: 4px;
 }
 
 .item .body .item-links {
@@ -388,7 +398,7 @@ a {
   border: 1px solid var(--green-soft);
   border-radius: 10px;
   padding: 10px 12px;
-  font-size: 15px;
+  font-size: 16px;
   background: var(--bg);
   color: var(--ink);
 }

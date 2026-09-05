@@ -42,6 +42,14 @@
           "title": "住宿 廣安里海邊 Airbnb",
           "mapUrl": "https://maps.app.goo.gl/szdTidedANuXafXa6"
         }
+      ],
+      "images": [
+        {
+          "src": "images/busan-2025/IMG_1228.jpeg"
+        },
+        {
+          "src": "images/busan-2025/IMG_1229.jpeg"
+        }
       ]
     },
     {
@@ -99,6 +107,14 @@
           "title": "遊艇",
           "pass": "VISIT BUSAN PASS",
           "mapUrl": "https://maps.app.goo.gl/b6RDP8qGGEkErUGx6"
+        }
+      ],
+      "images": [
+        {
+          "src": "images/busan-2025/IMG_1230.jpeg"
+        },
+        {
+          "src": "images/busan-2025/IMG_1231.jpeg"
         }
       ]
     },
@@ -170,6 +186,11 @@
           "type": "food",
           "title": "晚餐"
         }
+      ],
+      "images": [
+        {
+          "src": "images/busan-2025/IMG_1232.jpeg"
+        }
       ]
     },
     {
@@ -233,6 +254,11 @@
           "time": "22:30",
           "type": "transport",
           "title": "抵達 桃園國際機場"
+        }
+      ],
+      "images": [
+        {
+          "src": "images/busan-2025/IMG_1233.jpeg"
         }
       ]
     }

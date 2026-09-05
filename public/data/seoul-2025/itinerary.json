@@ -81,6 +81,19 @@
           "title": "住宿 聖水洞 Airbnb",
           "mapUrl": "https://maps.app.goo.gl/qJejKdSSC5ek4gjz8"
         }
+      ],
+      "images": [
+        {
+          "src": "images/seoul-2025/IMG_1221.jpeg",
+          "caption": "機票"
+        },
+        {
+          "src": "images/seoul-2025/IMG_1222.jpeg",
+          "caption": "行程示意圖"
+        },
+        {
+          "src": "images/seoul-2025/IMG_1227.jpeg"
+        }
       ]
     },
     {
@@ -161,6 +174,12 @@
           "type": "hotel",
           "title": "住宿 聖水洞 Airbnb",
           "mapUrl": "https://maps.app.goo.gl/qJejKdSSC5ek4gjz8"
+        }
+      ],
+      "images": [
+        {
+          "src": "images/seoul-2025/IMG_1223.jpeg",
+          "caption": "汝矣島夜櫻 輪中路"
         }
       ]
     },
@@ -309,6 +328,11 @@
           "title": "住宿 聖水洞 Airbnb",
           "mapUrl": "https://maps.app.goo.gl/qJejKdSSC5ek4gjz8"
         }
+      ],
+      "images": [
+        {
+          "src": "images/seoul-2025/IMG_1224.jpeg"
+        }
       ]
     },
     {
@@ -360,6 +384,11 @@
           "time": "21:25",
           "type": "transport",
           "title": "抵達 🛬 桃園國際機場 T2"
+        }
+      ],
+      "images": [
+        {
+          "src": "images/seoul-2025/IMG_1225.jpeg"
         }
       ]
     },
@@ -413,6 +442,11 @@
           "time": "21:25",
           "type": "transport",
           "title": "抵達 🛬 桃園國際機場 T2"
+        }
+      ],
+      "images": [
+        {
+          "src": "images/seoul-2025/IMG_1225c.jpeg"
         }
       ]
     }
