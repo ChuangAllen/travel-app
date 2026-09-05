@@ -84,15 +84,15 @@
       ],
       "images": [
         {
-          "src": "images/seoul-2025/IMG_1221.jpeg",
+          "src": "seoul-2025/IMG_1221.jpeg",
           "caption": "機票"
         },
         {
-          "src": "images/seoul-2025/IMG_1222.jpeg",
+          "src": "seoul-2025/IMG_1222.jpeg",
           "caption": "行程示意圖"
         },
         {
-          "src": "images/seoul-2025/IMG_1227.jpeg"
+          "src": "seoul-2025/IMG_1227.jpeg"
         }
       ]
     },
@@ -178,7 +178,7 @@
       ],
       "images": [
         {
-          "src": "images/seoul-2025/IMG_1223.jpeg",
+          "src": "seoul-2025/IMG_1223.jpeg",
           "caption": "汝矣島夜櫻 輪中路"
         }
       ]
@@ -331,7 +331,7 @@
       ],
       "images": [
         {
-          "src": "images/seoul-2025/IMG_1224.jpeg"
+          "src": "seoul-2025/IMG_1224.jpeg"
         }
       ]
     },
@@ -388,7 +388,7 @@
       ],
       "images": [
         {
-          "src": "images/seoul-2025/IMG_1225.jpeg"
+          "src": "seoul-2025/IMG_1225.jpeg"
         }
       ]
     },
@@ -446,7 +446,7 @@
       ],
       "images": [
         {
-          "src": "images/seoul-2025/IMG_1225c.jpeg"
+          "src": "seoul-2025/IMG_1225c.jpeg"
         }
       ]
     }

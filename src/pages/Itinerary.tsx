@@ -1,7 +1,8 @@
 import { useMemo, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
-import { fetchItinerary, assetUrl } from "../lib/content";
+import { fetchItinerary } from "../lib/content";
+import { signedImageUrls } from "../lib/images";
 import type { ItineraryDay, ItineraryItemType } from "../types";
 
 const dot: Record<ItineraryItemType, string> = {
@@ -32,7 +33,13 @@ function todayStr(): string {
   return new Date().toISOString().slice(0, 10);
 }
 
-function DayBlock({ day }: { day: ItineraryDay }) {
+function DayBlock({
+  day,
+  imageUrls
+}: {
+  day: ItineraryDay;
+  imageUrls: Record<string, string> | undefined;
+}) {
   return (
     <div>
       <div className="day-head">
@@ -76,10 +83,12 @@ function DayBlock({ day }: { day: ItineraryDay }) {
         ))}
       </div>
       {day.images?.map((img, i) => {
+        const url = imageUrls?.[img.src];
+        if (!url) return null; // 簽章網址尚未取得(或無權限):不顯示壞圖
         const photo = (
           <img
             className="day-photo"
-            src={assetUrl(img.src)}
+            src={url}
             alt={img.caption || `Day${day.day} ${day.title} ${i + 1}`}
             loading="lazy"
           />
@@ -118,14 +127,28 @@ export default function Itinerary() {
   // null = 尚未選擇(用預設當天);"all" = 顯示全部
   const [selected, setSelected] = useState<number | "all" | null>(null);
 
-  if (isLoading) return <div className="empty">載入中…</div>;
-  if (error) return <div className="empty">讀取行程失敗</div>;
-  if (!days.length) return <div className="empty">尚無行程內容</div>;
-
   const active: number | "all" = selected ?? defaultDay;
   const shownDays =
     active === "all" ? days : days.filter((d) => d.day === active);
   const selectValue = active === "all" ? "all" : String(active);
+
+  const imagePaths = useMemo(
+    () =>
+      Array.from(
+        new Set(shownDays.flatMap((d) => d.images?.map((i) => i.src) ?? []))
+      ),
+    [shownDays]
+  );
+  const { data: imageUrls } = useQuery({
+    queryKey: ["day-images", slug, imagePaths],
+    queryFn: () => signedImageUrls(imagePaths),
+    enabled: imagePaths.length > 0,
+    staleTime: 50 * 60 * 1000 // 簽章網址效期 1 小時,略短時間內視為新鮮
+  });
+
+  if (isLoading) return <div className="empty">載入中…</div>;
+  if (error) return <div className="empty">讀取行程失敗</div>;
+  if (!days.length) return <div className="empty">尚無行程內容</div>;
 
   return (
     <>
@@ -148,7 +171,7 @@ export default function Itinerary() {
       </div>
 
       {(shownDays.length ? shownDays : days).map((d) => (
-        <DayBlock key={d.day} day={d} />
+        <DayBlock key={d.day} day={d} imageUrls={imageUrls} />
       ))}
     </>
   );

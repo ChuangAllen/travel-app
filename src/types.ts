@@ -38,7 +38,7 @@ export interface ItineraryItem {
 }
 
 export interface DayImage {
-  /** 相對路徑 images/<slug>/<檔名> 或外部 URL */
+  /** Supabase Storage「trip-images」bucket 物件路徑 <slug>/<檔名>(需簽章)或外部 URL(直接用) */
   src: string;
   /** 圖片說明,無則不顯示 */
   caption?: string;

@@ -65,6 +65,11 @@
 │  sos_events / photos / packing_checks / message_receipts│
 │  全表 RLS：僅能存取自己的資料（trip_slug 隔開不同行程） │
 │  登入用代號 → 補 @traveldemo.app 當 Auth 的 email        │
+│                                                          │
+│  Storage bucket「trip-images」（私有）：                │
+│  行程插圖本體，物件路徑 <slug>/<檔名>，RLS 依            │
+│  trip_members / is_admin 過濾；前端用 createSignedUrl   │
+│  換 1 小時效期網址才能顯示（見 doc/Database.md）         │
 └────────────────────────────────────────────────────────┘
 ```
 
@@ -93,6 +98,7 @@ Travel APP/
 │   │   ├── supabase.ts               # createClient（無金鑰時優雅停用；persistSession）
 │   │   ├── auth.tsx                  # AuthProvider + useAuth（登入 / 登出 / session）
 │   │   ├── members.ts               # fetchMyAccess()：is_admin + trip_members
+│   │   ├── images.ts                 # signedImageUrls()：trip-images 私有 bucket 換簽章網址
 │   │   ├── config.ts                 # 使用者代號 ↔ Auth email 轉換
 │   │   └── trip.ts                   # localStorage 記住選過的行程
 │   └── pages/
@@ -113,7 +119,8 @@ Travel APP/
 │       └── phrases/<lang>.json
 │
 ├── scripts/
-│   └── sync-notion.ts                # Notion → public/data 同步（本機手動）
+│   ├── sync-notion.ts                # Notion → public/data 同步（本機手動）
+│   └── upload-images.ts              # 行程插圖 → Supabase Storage「trip-images」（本機手動）
 │
 ├── examples/                         # 內容 JSON 範本 + schema 說明（README.md）
 │
@@ -274,16 +281,18 @@ npm run sync:notion       # 產出 public/data/trips.json + <slug>/itinerary.jso
 - 不要在前端程式碼引用 `NOTION_TOKEN` 或 Supabase `service_role` key。
 - 不要讓前端直接呼叫 Notion API。
 - 不要手改 `public/data/` 內由 Notion 同步產生的欄位（改 Notion 再 `npm run sync:notion`）。
+- 不要把行程插圖放進 `public/images/`（repo 是 Public 會裸露；一律走 Supabase Storage「trip-images」私有 bucket，見 `doc/Database.md`）。
 
 ### 注意事項
 - `main.tsx` 用 `createHashRouter`：GitHub Pages 靜態站重新整理不會 404。
-- `vite.config.ts` 的 `runtimeCaching` 對 `/data/` 用 NetworkFirst、對 `/images/` 用 CacheFirst，出國斷網仍可看已快取內容。
+- `vite.config.ts` 的 `runtimeCaching` 對 `/data/` 用 NetworkFirst；對 Supabase Storage 簽章網址（`/storage/v1/object/sign/`）用 CacheFirst 並忽略 querystring 快取鍵，出國斷網仍可看已快取內容/已看過的圖。
 - Notion「時區JSON」欄位是 `label|tz;label|tz` 純文字（Notion API 不接受含大量引號的 JSON 字串），由 `sync-notion.ts` 解析。
-- Notion 圖片連結約 1 小時過期，若要用圖片需自建 proxy / 轉存。
+- Notion 圖片連結約 1 小時過期，若要用圖片需自建 proxy / 轉存（此為 Notion 端圖片欄位限制；本專案的行程插圖不用 Notion 存檔案本體，走 Supabase Storage，不受影響）。
 - **航班「出發地名稱」「抵達地名稱」「出發時間」「抵達時間」格式**（2026-09-05 統一，見 `doc/Issue.md`）：
   - 機場名稱一律填**全名 + 航廈**（例：`桃園國際機場 T1`、`東京成田國際機場 T1`、`首爾仁川機場 T1`），不要只填縮寫地名（如 `桃園 T1`）。
   - 時間一律填**完整日期 + 時間**（`YYYY-MM-DD HH:mm`，當地時間），不要只填 `HH:mm`；日期需與該行程 `trips.json` 的 `startDate`/`endDate` 及備註對齊。
   - 四個既有行程（釜山 2025/2026、首爾 2025、東京 2026）已依此格式統一；新增航班資料時比照辦理。
 - **每日插圖改用獨立 Notion 資料庫「每日圖片」**（2026-09-05 起，見 `doc/Issue.md` / `doc/Notion.md`）：一列一張圖，欄位 `標題`(檔名)/`專案slug`/`Day`/`說明`(可選圖說)/`連結`(可選點圖連結)/`排序`。取代舊的「每日行程」表「圖片」文字欄位。`types.ts` 的 `ItineraryDay.images` 型別為 `DayImage[]`（`{ src, caption?, link? }`），不是純字串陣列；新增/修改每日插圖一律在這個新資料庫操作。
+- **行程插圖全面改走 Supabase Storage 私有 bucket**（2026-09-05 起，見 `doc/Issue.md` 項次 007 / `doc/Database.md`）：圖片本體不進 git、不進 `public/images/`，一律上傳到 `trip-images` bucket，RLS 依 `trip_members`/`is_admin` 過濾，前端用 `signedImageUrls()` 換簽章網址顯示。流程：檔案暫放 `public/images/<slug>/` → `npm run upload:images`（需 `UPLOAD_ADMIN_CODE`/`UPLOAD_ADMIN_PASSWORD` 環境變數，管理者帳密）→ `npm run sync:notion`。`DayImage.src` 存的是 Storage 物件路徑 `<slug>/<檔名>`，不是本地檔案路徑。
 - 內容更新 = 本機跑 `npm run sync:notion` → commit → push（非自動、非即時）。
 - `src/lib/auth.tsx` 同時 export 元件與 hook，dev 下 Fast Refresh 會整頁重載（production 不受影響）。

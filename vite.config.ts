@@ -38,11 +38,21 @@ export default defineConfig({
             }
           },
           {
-            urlPattern: ({ url }) => url.pathname.includes("/images/"),
+            // Supabase Storage 私有 bucket 的簽章網址:圖片本體不會變,
+            // 只有簽章 token 每次不同,快取鍵要忽略 querystring 才能離線重看已看過的圖。
+            urlPattern: ({ url }) =>
+              url.hostname.endsWith(".supabase.co") &&
+              url.pathname.includes("/storage/v1/object/sign/"),
             handler: "CacheFirst",
             options: {
               cacheName: "trip-images",
-              expiration: { maxEntries: 300, maxAgeSeconds: 60 * 60 * 24 * 60 }
+              expiration: { maxEntries: 300, maxAgeSeconds: 60 * 60 * 24 * 60 },
+              plugins: [
+                {
+                  cacheKeyWillBeUsed: async ({ request }) =>
+                    request.url.split("?")[0]
+                }
+              ]
             }
           }
         ]

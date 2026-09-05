@@ -98,12 +98,13 @@ async function queryAll(database_id: string, sorts?: any[]) {
 }
 
 /**
- * 圖片檔名 → 路徑。圖片檔由你自己放進 public/images/<slug>/,Notion 不存檔案(省流量)。
- * - 純檔名 → images/<slug>/<檔名>
- * - 已是 http(s) 網址 → 原樣使用
+ * 圖片檔名 → 路徑。圖片檔上傳到 Supabase Storage 私有 bucket「trip-images」
+ * (見 scripts/upload-images.ts),Notion 不存檔案、也不進 git(省流量、避免外流)。
+ * - 純檔名 → Storage 物件路徑 <slug>/<檔名>(前端用 signedImageUrls() 換簽章網址)
+ * - 已是 http(s) 網址 → 原樣使用,不簽章
  */
 function imagePath(name: string, slug: string): string {
-  return /^https?:\/\//.test(name) ? name : `images/${slug}/${name}`;
+  return /^https?:\/\//.test(name) ? name : `${slug}/${name}`;
 }
 
 /**

@@ -32,7 +32,7 @@ export default function TripPicker() {
   const tripsQuery = useQuery({ queryKey: ["trips"], queryFn: fetchTrips });
   const accessQuery = useQuery({
     queryKey: ["my-access", user?.id],
-    queryFn: fetchMyAccess,
+    queryFn: () => fetchMyAccess(user!.id),
     enabled: authEnabled && !!user
   });
 
@@ -88,12 +88,15 @@ export default function TripPicker() {
         )}
       </div>
       <div className="content">
-        {loading && <div className="empty">載入中…</div>}
+        {loading && !accessQuery.isError && <div className="empty">載入中…</div>}
         {!loading && tripsQuery.isError && (
           <div className="empty">讀取行程清單失敗</div>
         )}
+        {accessQuery.isError && (
+          <div className="empty">讀取權限失敗,請重新整理再試一次</div>
+        )}
 
-        {!loading && !tripsQuery.isError && visible.length === 0 && (
+        {!loading && !tripsQuery.isError && !accessQuery.isError && visible.length === 0 && (
           <div className="empty">尚未有指派給你的行程,請聯絡管理者</div>
         )}
 

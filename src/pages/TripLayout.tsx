@@ -32,7 +32,7 @@ export default function TripLayout() {
 
   const accessQuery = useQuery({
     queryKey: ["my-access", user?.id],
-    queryFn: fetchMyAccess,
+    queryFn: () => fetchMyAccess(user!.id),
     enabled: authEnabled && !!user
   });
   const access = accessQuery.data;
